@@ -141,3 +141,15 @@ are in **[`docs/instructions-to-run.md`](docs/instructions-to-run.md)**.
 - **Architecture** and **AI design**: [`docs/architecture.md`](docs/architecture.md) · [`docs/ai-design.md`](docs/ai-design.md)
 - **Golden dataset** and provenance: [`data/golden/`](data/golden/) · [`SOURCES.md`](data/golden/SOURCES.md)
 - **Test results** and **eval reports**: [`docs/test-results.md`](docs/test-results.md) · [`services/api/evals/reports/`](services/api/evals/reports/)
+
+## License
+
+The source code and documentation are released under the [MIT License](LICENSE). Third-party material keeps its own
+license:
+
+- **Product photos** in [`data/golden/products/`](data/golden/products/) are openly licensed images from Wikimedia
+  Commons (CC0, CC BY and CC BY-SA). Ads and planted images derived from them (`data/golden/v*/outputs/`,
+  `data/golden/v2/planted/`) are released under CC BY-SA 4.0. Authors and licences are in
+  [`data/golden/SOURCES.md`](data/golden/SOURCES.md).
+- **Noto fonts** in [`services/api/assets/fonts/`](services/api/assets/fonts/) are under the
+  [SIL Open Font License 1.1](services/api/assets/fonts/OFL.txt).
