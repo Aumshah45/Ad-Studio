@@ -1,0 +1,68 @@
+# Deterministic creative cues per effective season: the planner's fallback when no text model is
+# configured or the planner call fails (ai-design §12 "Planner down"). Visual only; no text.
+version: 1
+seasons:
+  summer:
+    setting: A sunlit outdoor table on a warm summer afternoon
+    season_cues: [bright summer sun, fresh seasonal fruit, light summer clothing on a chair]
+    contradiction_cues: [snow, bare trees, winter coats, fireplace]
+    palette: ["#F4D35E", "#0D3B66", "#FAF0CA", "#EE964B"]
+    lighting: bright late-morning sun
+    mood: relaxed, fresh
+  winter:
+    setting: A cosy indoor corner on a cold winter day
+    season_cues: [warm knit blanket, frost on the window, soft lamplight]
+    contradiction_cues: [beach, swimwear, bright summer sun, blooming flowers]
+    palette: ["#1B263B", "#E0E1DD", "#778DA9", "#C8102E"]
+    lighting: soft warm lamplight
+    mood: cosy, calm
+  spring:
+    setting: A fresh garden table in early spring
+    season_cues: [fresh blossom, new green leaves, soft morning light]
+    contradiction_cues: [snow, autumn leaves, bare trees]
+    palette: ["#A8DADC", "#F1FAEE", "#E9C46A", "#2A9D8F"]
+    lighting: soft morning light
+    mood: fresh, hopeful
+  autumn:
+    setting: A warm wooden table by a window on a crisp autumn day
+    season_cues: [golden autumn leaves, warm knitwear, seasonal squash]
+    contradiction_cues: [snow, beach, swimwear, spring blossom]
+    palette: ["#9C4A1A", "#E9C46A", "#F4E3C1", "#3D405B"]
+    lighting: low golden afternoon light
+    mood: warm, mellow
+  tropical_wet:
+    setting: A covered veranda with lush green plants during the rainy season
+    season_cues: [lush wet greenery, rain on leaves, overcast soft light]
+    contradiction_cues: [snow, bare trees, winter coats, autumn leaves]
+    palette: ["#2A9D8F", "#E9F5DB", "#264653", "#F4A261"]
+    lighting: soft overcast daylight
+    mood: lush, calm
+  tropical_dry:
+    setting: A bright shaded terrace on a clear, warm dry-season day
+    season_cues: [clear blue sky, warm sunshine, tropical plants]
+    contradiction_cues: [snow, bare trees, winter coats, autumn leaves]
+    palette: ["#F4A261", "#FFF3E0", "#2A9D8F", "#E76F51"]
+    lighting: warm clear sunshine
+    mood: bright, easy
+  hot:
+    setting: A shaded, air-cooled terrace on a very hot, sunny day
+    season_cues: [strong bright sun, cool shade, cold drinks with condensation]
+    contradiction_cues: [snow, rain, winter coats, bare trees]
+    palette: ["#E9C46A", "#FFFFFF", "#264653", "#E76F51"]
+    lighting: strong midday sun softened by shade
+    mood: cool, refreshing
+  mild:
+    setting: A pleasant outdoor terrace on a mild, clear day
+    season_cues: [clear sky, gentle sunshine, light layers]
+    contradiction_cues: [snow, heavy winter coats]
+    palette: ["#E9C46A", "#F1FAEE", "#457B9D", "#E76F51"]
+    lighting: gentle afternoon sun
+    mood: calm, pleasant
+  unspecified:
+    setting: A bright, clean lifestyle setting where this product is used
+    season_cues: [soft natural daylight, uncluttered surfaces]
+    contradiction_cues: [extreme weather, gloomy dark lighting]
+    palette: ["#F4D35E", "#0D3B66", "#FAF0CA"]
+    lighting: soft daylight
+    mood: fresh
+generic_locale_cues: [contemporary everyday interior, natural materials]

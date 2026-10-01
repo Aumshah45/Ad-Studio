@@ -1,0 +1,16 @@
+{
+  "after_repair_pass_rate": 1.0,
+  "cost_per_approved_ad": 0.08532605,
+  "first_attempt_pass_rate": 0.95,
+  "hemisphere_accuracy": 1.0,
+  "human_agreement": 0.65,
+  "network_calls": 0.0,
+  "p50_latency_ms": 45554.5,
+  "precision.product": 0.0,
+  "precision.text": 0.25,
+  "recall.context": 0.0,
+  "recall.product": 0.0,
+  "recall.text": 1.0,
+  "resolution_ok_rate": 1.0,
+  "text_exact_rate": 1.0
+}

@@ -1,0 +1,60 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Ad Studio API"
+authors = [
+    { name = "Aum Shah", email = "aumshah999@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.20.0",
+    "fastapi>=0.141.1",
+    "fonttools>=4.60",
+    "httpx>=0.28.1",
+    "numpy>=2.5.3",
+    "ocrmac>=1.0 ; sys_platform == 'darwin'",
+    "opentelemetry-exporter-otlp-proto-http>=1.44.0",
+    "opentelemetry-instrumentation-fastapi>=0.65b0",
+    "opentelemetry-sdk>=1.44.0",
+    "pgvector>=0.5.0",
+    "pillow>=12.3.0",
+    "psycopg[binary]>=3.3.6",
+    "pydantic-ai-slim[google,groq,openai]>=2.49.0",
+    "pydantic-settings>=2.15.0",
+    "pytesseract>=0.3.13",
+    "python-multipart>=0.0.32",
+    "pyyaml>=6.0.3",
+    "rapidfuzz>=3.14.6",
+    "regex>=2026.9.10",
+    "scikit-image>=0.25",
+    "sqlalchemy[asyncio]>=2.0.54",
+    "structlog>=26.1.0",
+    "uvicorn[standard]>=0.53.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.16.8",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = ["ignore::DeprecationWarning:opentelemetry.*"]
+
+[tool.pyright]
+include = ["src", "tests", "evals", "migrations"]
+strict = ["src"]
+typeCheckingMode = "standard"
+pythonVersion = "3.13"
+venvPath = "."
+venv = ".venv"

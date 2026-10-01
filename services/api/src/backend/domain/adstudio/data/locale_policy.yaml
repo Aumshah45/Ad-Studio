@@ -1,0 +1,78 @@
+# Locale policy: what a localised ad must avoid. Items reach the spec's negatives, the image
+# prompt's AVOID block and the context rubric's brand-safety check.
+#
+# Markets without a row here get `default` only; markets we have no data for at all (an ISO code
+# without a countries.yaml row) get `default` + `conservative`: a neutral, internationally generic
+# scene, because we can't check local plausibility.
+version: 1
+default:
+  avoid:
+    - stereotypes or caricatures of local people
+    - national flags used as decoration
+    - real brand logos other than the product's
+    - religious symbols used as decoration
+conservative:
+  avoid:
+    - recognisable landmarks or monuments
+    - places of worship
+    - traditional or national dress
+    - signage or writing in any language
+    - alcohol
+    - people's faces
+  notes: No market data for this country; use a neutral, internationally generic setting.
+countries:
+  AE:
+    avoid: [alcohol, pork, revealing clothing, gambling imagery]
+  SA:
+    avoid: [alcohol, pork, revealing clothing, gambling imagery]
+  QA:
+    avoid: [alcohol, pork, revealing clothing]
+  KW:
+    avoid: [alcohol, pork, revealing clothing]
+  BH:
+    avoid: [alcohol, pork]
+  OM:
+    avoid: [alcohol, pork, revealing clothing]
+  EG:
+    avoid: [alcohol, pork]
+  PK:
+    avoid: [alcohol, pork]
+  MA:
+    avoid: [alcohol, pork]
+  IN:
+    avoid: [beef dishes, footwear or leather near religious imagery]
+  NP:
+    avoid: [beef dishes]
+  IL:
+    avoid: [pork, shellfish]
+  JP:
+    avoid: [the number 4 as a visible motif, chrysanthemums as gifts]
+  CN:
+    avoid: [clocks as gifts, green hats, the number 4 as a visible motif]
+  HK:
+    avoid: [clocks as gifts, the number 4 as a visible motif]
+  TW:
+    avoid: [clocks as gifts, the number 4 as a visible motif]
+  KR:
+    avoid: [the number 4 as a visible motif, names written in red]
+  TH:
+    avoid: [images of the royal family, Buddha images used as decoration, feet pointing at people]
+  AU:
+    avoid: [kangaroo or koala clichés, Aboriginal art or symbols used as decoration]
+  NZ:
+    avoid: [Māori symbols or moko used as decoration]
+  MX:
+    avoid: [sombrero and cactus clichés]
+  US:
+    avoid: [guns or weapons]
+holidays:
+  diwali:
+    avoid: [fireworks close to people, beef dishes]
+  ramadan:
+    avoid: [food or drink shown in daylight scenes, alcohol]
+  eid:
+    avoid: [alcohol]
+  day_of_the_dead:
+    avoid: [horror or Halloween-style skeletons]
+  christmas:
+    avoid: [religious nativity scenes]

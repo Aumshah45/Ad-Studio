@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@@TITLE@@</title>
+<style>
+:root { --bg:#f7f7f5; --fg:#1d1d1f; --muted:#5b5b60; --card:#fff; --line:#dcdcd8; --accent:#3b3bb3;
+  --pass:#1f7a3a; --fail:#b3261e; }
+@media (prefers-color-scheme: dark) { :root { --bg:#141416; --fg:#ececef; --muted:#a4a4ab;
+  --card:#1e1e22; --line:#34343a; --accent:#9d9dff; --pass:#6fd08c; --fail:#ff8a80; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:2; background:var(--bg); border-bottom:1px solid var(--line);
+  padding:12px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+header h1 { font-size:18px; margin:0 12px 0 0; }
+button, .file { font:inherit; padding:6px 12px; border-radius:6px; border:1px solid var(--line);
+  background:var(--card); color:var(--fg); cursor:pointer; }
+button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+main { max-width:1200px; margin:0 auto; padding:16px; }
+details { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 16px; margin-bottom:16px; }
+table { border-collapse:collapse; width:100%; font-size:14px; }
+th, td { border:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }
+.refs { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+.refs figure { margin:0; background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px; }
+.refs img { height:120px; display:block; }
+.card { display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:16px; background:var(--card);
+  border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px; }
+.card.done { border-color:var(--pass); }
+.card img { width:100%; height:auto; border-radius:6px; display:block; }
+.card h2 { font-size:16px; margin:0 0 8px; }
+dl { display:grid; grid-template-columns:max-content 1fr; gap:2px 12px; margin:0 0 8px; }
+dt { color:var(--muted); } dd { margin:0; }
+.req-label { color:var(--muted); margin:8px 0 2px; }
+.req { font:600 20px/1.3 ui-monospace, Menlo, monospace; white-space:pre-wrap; margin:0;
+  padding:8px; border:1px dashed var(--line); border-radius:6px; }
+.points { font-size:13px; color:var(--muted); }
+.note { font-size:14px; border-left:3px solid var(--accent); padding-left:8px; }
+.dims { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+fieldset.dim { border:1px solid var(--line); border-radius:6px; padding:4px 10px; }
+fieldset.dim legend { font-weight:600; padding:0 4px; }
+fieldset.dim label { margin-right:8px; }
+fieldset.dim[disabled] { opacity:0.6; }
+fieldset.dim.focus { border-color:var(--accent); border-width:2px; }
+.preset { font-size:13px; color:var(--muted); }
+.notes { display:flex; gap:8px; align-items:center; }
+.notes input { flex:1; font:inherit; padding:4px 8px; border:1px solid var(--line); border-radius:6px;
+  background:var(--bg); color:var(--fg); }
+@media (max-width:720px) { .card { grid-template-columns:1fr; } }
+</style></head>
+<body>
+<header>
+<h1>@@TITLE@@</h1>
+<span id="progress">0 / @@N@@ labelled</span>
+<button class="primary" id="download">Download labels.csv</button>
+<label class="file">Load labels.csv <input type="file" id="load" accept=".csv,text/csv" hidden></label>
+<button id="clear">Clear answers</button>
+</header>
+<main>
+<details open><summary><strong>How to label</strong> (LABELING.md, rubric version @@RUBRIC_VERSION@@)</summary>
+<p>Label every image <strong>before</strong> looking at the evaluator's verdicts; this page does not
+contain them. Mark each dimension pass or fail. If unsure, mark <strong>fail</strong> and add a
+note. Save the downloaded file as <code>@@SAVE_AS@@</code>.</p>
+@@MODE_NOTE@@
+@@RUBRIC@@
+</details>
+<section class="refs">@@REFS@@</section>
+@@CARDS@@
+</main>
+<script>
+const COLUMNS = @@COLUMNS@@;
+const DIMS = @@DIMS@@;
+const RUBRIC = @@RUBRIC_JSON@@;
+const STORE = @@STORE@@;
+const PRELOAD = @@PRELOAD@@;
+const cards = [...document.querySelectorAll(".card")];
+function load() { try { return JSON.parse(localStorage.getItem(STORE) || "{}"); } catch (e) { return {}; } }
+function save(state) { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {} }
+let state = load();
+for (const [key, row] of Object.entries(PRELOAD)) if (!state[key]) state[key] = { ...row };
+function read(card) {
+  const row = { notes: card.querySelector("[data-notes]").value.trim() };
+  for (const input of card.querySelectorAll("input[type=radio]:checked")) row[input.dataset.dim] = input.value;
+  return row;
+}
+function apply(card, row) {
+  for (const input of card.querySelectorAll("input[type=radio]")) input.checked = row[input.dataset.dim] === input.value;
+  card.querySelector("[data-notes]").value = row.notes || "";
+}
+function refresh() {
+  let done = 0;
+  for (const card of cards) {
+    const row = state[card.dataset.key] || {};
+    const complete = DIMS.every((d) => row[d]);
+    card.classList.toggle("done", complete);
+    if (complete) done += 1;
+  }
+  document.getElementById("progress").textContent = `${done} / ${cards.length} labelled`;
+}
+for (const card of cards) {
+  apply(card, state[card.dataset.key] || {});
+  card.addEventListener("change", () => { state[card.dataset.key] = read(card); save(state); refresh(); });
+  card.querySelector("[data-notes]").addEventListener("input", () => { state[card.dataset.key] = read(card); save(state); });
+}
+refresh();
+function csvCell(v) { v = String(v ?? ""); return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v; }
+document.getElementById("download").addEventListener("click", () => {
+  const lines = [COLUMNS.join(",")];
+  for (const card of cards) {
+    const row = state[card.dataset.key];
+    if (!row) continue;
+    const fields = { image_sha: card.dataset.sha, set: card.dataset.set, brief_id: card.dataset.brief,
+      notes: row.notes || "", rubric_version: RUBRIC };
+    lines.push(COLUMNS.map((c) => (c in fields ? fields[c] : row[c] || "")).map(csvCell).join(","));
+  }
+  const blob = new Blob([lines.join("\n") + "\n"], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "labels.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+function parseCsv(text) {
+  const rows = []; let row = [], cell = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) { if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; } else if (c === '"') quoted = false; else cell += c; }
+    else if (c === '"') quoted = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+    else if (c !== "\\r") cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+document.getElementById("load").addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  const [head, ...rows] = parseCsv(await file.text());
+  const col = (name) => head.indexOf(name);
+  for (const r of rows) {
+    if (!r[col("image_sha")]) continue;
+    const key = `${r[col("image_sha")]}|${r[col("set")]}`;
+    const row = { notes: col("notes") >= 0 ? r[col("notes")] : "" };
+    for (const d of DIMS) row[d] = col(d) >= 0 ? r[col(d)] : "";
+    state[key] = row;
+  }
+  save(state);
+  for (const card of cards) apply(card, state[card.dataset.key] || {});
+  refresh();
+});
+document.getElementById("clear").addEventListener("click", () => {
+  if (!confirm("Clear every answer on this page?")) return;
+  state = {}; save(state);
+  for (const card of cards) apply(card, {});
+  refresh();
+});
+</script>
+</body></html>

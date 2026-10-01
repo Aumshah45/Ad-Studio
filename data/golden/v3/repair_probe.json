@@ -1,0 +1,266 @@
+[
+  {
+    "brief_id": "V05",
+    "source_run_id": "a928efed-2124-493e-98fc-b6a4a14e2b39",
+    "source_candidate_id": "099052e0-7d65-461d-bcfa-757f3379bb70",
+    "slot": 0,
+    "draft_failed": [
+      "text"
+    ],
+    "draft_unverified": [],
+    "probe_run_id": "6875745a-889a-40be-a4f3-4e5f53b087e1",
+    "status": "passed",
+    "reason": "passed",
+    "outcome": "native",
+    "repairs": 1,
+    "rows": [
+      "text_in_zone"
+    ],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [
+          "text"
+        ],
+        "unverified": [],
+        "image_sha": "b1d093fb29700b52644db648006d5561c084c30fb846d255506ecabefe6a8a0c"
+      },
+      {
+        "kind": "repair",
+        "model": "google:gemini-3.1-flash-image",
+        "verdict": "pass",
+        "failed": [],
+        "unverified": [],
+        "image_sha": "2456f05a3921cfe704ca756914dfbfe1f1fb67cecc7808a2afb8fa1c0ea6cc25"
+      }
+    ],
+    "cost_usd": 0.067,
+    "latency_ms": 22263,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  },
+  {
+    "brief_id": "V09",
+    "source_run_id": "580f4727-1b46-490d-bbd9-c9013cccf6f1",
+    "source_candidate_id": "46b727d0-9408-48d3-a3f7-c816f46abc9c",
+    "slot": 1,
+    "draft_failed": [],
+    "draft_unverified": [
+      "text"
+    ],
+    "probe_run_id": "6cbde2c7-311d-4a5b-91a7-dcf79b6c3dd5",
+    "status": "passed",
+    "reason": "overlay",
+    "outcome": "overlay",
+    "repairs": 0,
+    "rows": [],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [],
+        "unverified": [
+          "text"
+        ],
+        "image_sha": "6c16308411fb67b2719d34484eb9354d45d1367b95e00fb071b06abfab0a5797"
+      },
+      {
+        "kind": "overlay",
+        "model": "local:pillow-overlay",
+        "verdict": "pass",
+        "failed": [],
+        "unverified": [],
+        "image_sha": "697f61d36b248182c0f4f1e4542415add6526f9fb3dc3ea14e199e44516fb1ec"
+      }
+    ],
+    "cost_usd": 0.0,
+    "latency_ms": 4571,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  },
+  {
+    "brief_id": "V12",
+    "source_run_id": "64c93e9d-6f54-4749-9dbc-05d73b837317",
+    "source_candidate_id": "c668b7c4-8848-4482-aacd-8b3b586ebd58",
+    "slot": 0,
+    "draft_failed": [
+      "text"
+    ],
+    "draft_unverified": [],
+    "probe_run_id": "93819573-7d10-460c-874b-44d97bb53bba",
+    "status": "needs_review",
+    "reason": "overlay_verify_failed",
+    "outcome": null,
+    "repairs": 1,
+    "rows": [
+      "text_in_zone"
+    ],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [
+          "text"
+        ],
+        "unverified": [],
+        "image_sha": "8e5a3de53feb1b605388d81cea3730a7c221730dcd9d3d6669893e6f6942d7b4"
+      },
+      {
+        "kind": "repair",
+        "model": "google:gemini-3.1-flash-image",
+        "verdict": "fail",
+        "failed": [
+          "product"
+        ],
+        "unverified": [
+          "text"
+        ],
+        "image_sha": "78e5ae644a039b64c1007ae9cd676305bbc9ec61b21b584d30bb8545f9374c22"
+      },
+      {
+        "kind": "overlay",
+        "model": "local:pillow-overlay",
+        "verdict": "fail",
+        "failed": [
+          "text"
+        ],
+        "unverified": [],
+        "image_sha": "a9b4ea775f5eefba5383adea08bc7589cabf6e6b996dfc64b52d43485dc050be"
+      }
+    ],
+    "cost_usd": 0.067,
+    "latency_ms": 38695,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  },
+  {
+    "brief_id": "V12",
+    "source_run_id": "64c93e9d-6f54-4749-9dbc-05d73b837317",
+    "source_candidate_id": "8ee263d1-867b-4717-a9a7-7412452b19c0",
+    "slot": 1,
+    "draft_failed": [],
+    "draft_unverified": [
+      "text"
+    ],
+    "probe_run_id": "c40b5693-fab1-4a9b-916b-e2218dfbc010",
+    "status": "needs_review",
+    "reason": "overlay_verify_failed",
+    "outcome": null,
+    "repairs": 0,
+    "rows": [],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [],
+        "unverified": [
+          "text"
+        ],
+        "image_sha": "10938bdd1f84785813a1119cf176d53c567e2fb1207cd57646d530c16939d519"
+      },
+      {
+        "kind": "overlay",
+        "model": "local:pillow-overlay",
+        "verdict": "fail",
+        "failed": [
+          "text"
+        ],
+        "unverified": [],
+        "image_sha": "94a9cf94aa91611efa0aaa151f0ea71673f2ebd89d6ff607ad8c18941e51abc6"
+      }
+    ],
+    "cost_usd": 0.0,
+    "latency_ms": 2322,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  },
+  {
+    "brief_id": "V14",
+    "source_run_id": "0953a5e9-7fe6-49c2-8a4a-1a4b2e8ac0e9",
+    "source_candidate_id": "3242954c-4e19-4878-bfa9-e1da73341cdb",
+    "slot": 1,
+    "draft_failed": [
+      "context"
+    ],
+    "draft_unverified": [],
+    "probe_run_id": "d429bb76-3201-4c44-bf22-48659c4b9d46",
+    "status": "passed",
+    "reason": "passed",
+    "outcome": "native",
+    "repairs": 1,
+    "rows": [
+      "context"
+    ],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [
+          "context"
+        ],
+        "unverified": [],
+        "image_sha": "0ea049927b7f2fba334a96a320c5c78d4d90571320d9ca6540e3bbc3e56923a9"
+      },
+      {
+        "kind": "repair",
+        "model": "google:gemini-3.1-flash-image",
+        "verdict": "pass",
+        "failed": [],
+        "unverified": [],
+        "image_sha": "483ae2f167b2e98e9dfe0e5e8b24ee6f5b618b7b1d0bc5c07509edcf8f1d153d"
+      }
+    ],
+    "cost_usd": 0.067,
+    "latency_ms": 20137,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  },
+  {
+    "brief_id": "V15",
+    "source_run_id": "40118a0a-be45-4d55-9b66-d5fc0e719149",
+    "source_candidate_id": "c97f4d75-d7d3-42e5-83ba-4491c2cec66e",
+    "slot": 0,
+    "draft_failed": [
+      "text"
+    ],
+    "draft_unverified": [],
+    "probe_run_id": "77abef04-84ed-4e49-bd28-298608f1f20a",
+    "status": "passed",
+    "reason": "passed",
+    "outcome": "native",
+    "repairs": 1,
+    "rows": [
+      "text_in_zone"
+    ],
+    "steps": [
+      {
+        "kind": "initial",
+        "model": "google:gemini-3.1-flash-lite-image",
+        "verdict": "fail",
+        "failed": [
+          "text"
+        ],
+        "unverified": [],
+        "image_sha": "1bb3d2fd37d55bf47fd2c151f683995b4880108bc4edede8a43f4c184ccf282e"
+      },
+      {
+        "kind": "repair",
+        "model": "google:gemini-3.1-flash-image",
+        "verdict": "pass",
+        "failed": [],
+        "unverified": [],
+        "image_sha": "9f95465387a5969a1010987170bbce4d56c3e3747baf93d4c863ba55d4c2b339"
+      }
+    ],
+    "cost_usd": 0.067,
+    "latency_ms": 26398,
+    "note": "",
+    "cost_note": "recovered from the ledger: image calls matched by output sha; this probe ran before the run-id binding fix, so its judge spend ($0.0491 for all 6 probes) is not per-draft"
+  }
+]

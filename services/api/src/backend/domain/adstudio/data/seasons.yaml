@@ -1,0 +1,155 @@
+# Season input vocabulary (ai-design §2.1): months, named seasons and holidays. Matching is on the
+# lower-cased, accent-folded input with qualifiers such as "early"/"mid"/"late" and years removed.
+version: 1
+months:
+  1: [january, jan, enero, janeiro, janvier, januar, gennaio]
+  2: [february, feb, febrero, fevereiro, février, fevrier, februar, febbraio]
+  3: [march, mar, marzo, março, marco, mars, märz, marz]
+  4: [april, apr, abril, avril, aprile]
+  5: [may, mayo, maio, mai, maggio]
+  6: [june, jun, junio, junho, juin, juni, giugno]
+  7: [july, jul, julio, julho, juillet, juli, luglio]
+  8: [august, aug, agosto, août, aout]
+  9: [september, sep, sept, septiembre, setembro, septembre, settembre]
+  10: [october, oct, octubre, outubro, octobre, oktober, ottobre]
+  11: [november, nov, noviembre, novembro, novembre]
+  12: [december, dec, diciembre, dezembro, décembre, decembre, dezember, dicembre]
+named_seasons:
+  summer: [summer, summertime, verano, verão, verao, été, ete, sommer, estate]
+  winter: [winter, wintertime, invierno, inverno, hiver]
+  spring: [spring, springtime, primavera, printemps, frühling, fruhling]
+  autumn: [autumn, fall, otoño, otono, outono, automne, herbst, autunno]
+  tropical_wet: [wet season, rainy season, monsoon, monsoon season, rains]
+  tropical_dry: [dry season]
+# months: the months the holiday falls in (most years). by_country overrides for local dates.
+# hemisphere_months overrides by hemisphere (e.g. back to school). months: [] = no fixed month.
+holidays:
+  christmas:
+    name: Christmas
+    aliases: [christmas, xmas, christmas time, navidad, natal, noël, noel, weihnachten]
+    months: [12]
+    cues: [a small decorated Christmas tree, string lights, wrapped gifts]
+  holiday_season:
+    name: Holiday season
+    aliases: [holiday season, holidays, the holidays, festive season, festive]
+    months: [12]
+    cues: [tasteful festive decorations, warm string lights]
+  new_year:
+    name: New Year
+    aliases: [new year, new year's, new years, new year's eve, nye, año nuevo, ano novo]
+    months: [12, 1]
+    cues: [subtle celebration sparkle, champagne-coloured accents]
+  lunar_new_year:
+    name: Lunar New Year
+    aliases: [lunar new year, chinese new year, spring festival, cny, seollal, tet, tết]
+    months: [1, 2]
+    cues: [red paper lanterns, mandarin oranges, gold accents]
+  valentines_day:
+    name: Valentine's Day
+    aliases: [valentine's day, valentines day, valentines, valentine]
+    months: [2]
+    cues: [a small bouquet of roses, soft pink and red accents]
+  carnival:
+    name: Carnival
+    aliases: [carnival, carnaval, mardi gras]
+    months: [2]
+    cues: [colourful streamers and confetti, festive masks on a table]
+  holi:
+    name: Holi
+    aliases: [holi]
+    months: [3]
+    cues: [bright coloured powder in small bowls, marigold flowers]
+  easter:
+    name: Easter
+    aliases: [easter, pascua, páscoa, pascoa, pâques, paques, ostern]
+    months: [3, 4]
+    cues: [pastel painted eggs, spring flowers in a vase]
+  songkran:
+    name: Songkran
+    aliases: [songkran, thai new year]
+    months: [4]
+    cues: [jasmine garlands, water bowls with flowers]
+  golden_week:
+    name: Golden Week
+    aliases: [golden week]
+    months: [4, 5]
+    cues: [carp streamers, fresh green leaves]
+  mothers_day:
+    name: Mother's Day
+    aliases: [mother's day, mothers day, mothering sunday, día de la madre, dia das mães]
+    months: [5]
+    by_country: {GB: [3], IE: [3], AR: [10]}
+    cues: [a bouquet of fresh flowers, a handwritten card without text visible]
+  fathers_day:
+    name: Father's Day
+    aliases: [father's day, fathers day]
+    months: [6]
+    by_country: {AU: [9], NZ: [9]}
+    cues: [a relaxed weekend breakfast table, a wrapped gift]
+  independence_day_us:
+    name: Fourth of July
+    aliases: [fourth of july, 4th of july, independence day, july 4th, july fourth]
+    months: [7]
+    cues: [a backyard barbecue, red white and blue bunting]
+  back_to_school:
+    name: Back to school
+    aliases: [back to school, back-to-school, school season]
+    months: [8, 9]
+    hemisphere_months: {south: [1, 2]}
+    cues: [notebooks and pencils on a desk, a school backpack]
+  mid_autumn:
+    name: Mid-Autumn Festival
+    aliases: [mid-autumn festival, mid autumn festival, moon festival, chuseok]
+    months: [9]
+    cues: [round paper lanterns, mooncakes on a plate]
+  oktoberfest:
+    name: Oktoberfest
+    aliases: [oktoberfest]
+    months: [9, 10]
+    cues: [blue and white checked tablecloth, pretzels on a wooden table]
+  diwali:
+    name: Diwali
+    aliases: [diwali, deepavali, dipawali]
+    months: [10, 11]
+    cues: [lit diya oil lamps, marigold garlands, rangoli patterns]
+  halloween:
+    name: Halloween
+    aliases: [halloween]
+    months: [10]
+    cues: [carved pumpkins, autumn leaves]
+  day_of_the_dead:
+    name: Día de Muertos
+    aliases: [día de muertos, dia de muertos, día de los muertos, dia de los muertos, day of the dead]
+    months: [11]
+    cues: [marigold (cempasúchil) flowers, papel picado bunting, candles]
+  thanksgiving:
+    name: Thanksgiving
+    aliases: [thanksgiving]
+    months: [11]
+    by_country: {CA: [10]}
+    cues: [a harvest table with squash and pie, warm candlelight]
+  singles_day:
+    name: Singles' Day
+    aliases: [singles' day, singles day, "11.11", double eleven]
+    months: [11]
+    cues: [bold graphic shopping-bag props]
+  black_friday:
+    name: Black Friday
+    aliases: [black friday, cyber monday, black friday weekend]
+    months: [11]
+    cues: ["bold, high-contrast retail styling"]
+  hanukkah:
+    name: Hanukkah
+    aliases: [hanukkah, chanukah]
+    months: [12]
+    cues: [a lit menorah, blue and silver accents]
+  ramadan:
+    name: Ramadan
+    aliases: [ramadan, ramazan]
+    months: []
+    cues: [crescent-moon lanterns, dates in a bowl at dusk]
+  eid:
+    name: Eid
+    aliases: [eid, eid al-fitr, eid al fitr, eid al-adha, eid al adha, eid mubarak]
+    months: []
+    cues: [crescent-moon lanterns, a shared festive table]

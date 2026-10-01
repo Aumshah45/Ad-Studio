@@ -1,0 +1,5763 @@
+{
+  "components": {
+    "schemas": {
+      "AdStudioStatus": {
+        "properties": {
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "models": {
+            "items": {
+              "$ref": "#/components/schemas/ModelRow"
+            },
+            "title": "Models",
+            "type": "array"
+          },
+          "ocr": {
+            "$ref": "#/components/schemas/OcrStatus"
+          },
+          "status": {
+            "enum": [
+              "ok",
+              "degraded"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "models",
+          "ocr"
+        ],
+        "title": "AdStudioStatus",
+        "type": "object"
+      },
+      "AgreementMetrics": {
+        "properties": {
+          "agree": {
+            "default": 0,
+            "title": "Agree",
+            "type": "integer"
+          },
+          "agreement": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agreement"
+          },
+          "kappa": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kappa"
+          },
+          "n": {
+            "default": 0,
+            "title": "N",
+            "type": "integer"
+          }
+        },
+        "title": "AgreementMetrics",
+        "type": "object"
+      },
+      "Body_products_create_product": {
+        "properties": {
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "description": "PNG, JPEG or WebP, at most 10 MB",
+            "title": "Image",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "image"
+        ],
+        "title": "Body_products_create_product",
+        "type": "object"
+      },
+      "BriefView": {
+        "properties": {
+          "aspect_ratio": {
+            "title": "Aspect Ratio",
+            "type": "string"
+          },
+          "geography_code": {
+            "title": "Geography Code",
+            "type": "string"
+          },
+          "geography_detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Geography Detail"
+          },
+          "golden_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Golden Key"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "product_id": {
+            "format": "uuid",
+            "title": "Product Id",
+            "type": "string"
+          },
+          "required_text": {
+            "title": "Required Text",
+            "type": "string"
+          },
+          "season": {
+            "title": "Season",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "product_id",
+          "geography_code",
+          "geography_detail",
+          "season",
+          "required_text",
+          "aspect_ratio",
+          "golden_key"
+        ],
+        "title": "BriefView",
+        "type": "object"
+      },
+      "BudgetWarningEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "cap_usd": {
+            "title": "Cap Usd",
+            "type": "number"
+          },
+          "image_calls": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Calls"
+          },
+          "max_image_calls": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Image Calls"
+          },
+          "reason": {
+            "default": "threshold",
+            "enum": [
+              "threshold",
+              "exhausted",
+              "deadline"
+            ],
+            "title": "Reason",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "spent_usd": {
+            "title": "Spent Usd",
+            "type": "number"
+          },
+          "type": {
+            "const": "budget.warning",
+            "default": "budget.warning",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "spent_usd",
+          "cap_usd"
+        ],
+        "title": "BudgetWarningEvent",
+        "type": "object"
+      },
+      "CandidateCreatedEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "attempt": {
+            "title": "Attempt",
+            "type": "integer"
+          },
+          "cached": {
+            "default": false,
+            "title": "Cached",
+            "type": "boolean"
+          },
+          "candidate_id": {
+            "format": "uuid",
+            "title": "Candidate Id",
+            "type": "string"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Height"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id"
+          },
+          "image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Url"
+          },
+          "kind": {
+            "enum": [
+              "initial",
+              "repair",
+              "clean_plate",
+              "overlay"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "native_height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Native Height"
+          },
+          "native_width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Native Width"
+          },
+          "parent_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The candidate this one repairs or overlays (lineage)",
+            "title": "Parent Candidate Id"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "slot": {
+            "title": "Slot",
+            "type": "integer"
+          },
+          "status": {
+            "default": "pending",
+            "enum": [
+              "pending",
+              "blocked"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "type": {
+            "const": "candidate.created",
+            "default": "candidate.created",
+            "title": "Type",
+            "type": "string"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Width"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "candidate_id",
+          "attempt",
+          "slot",
+          "kind",
+          "status",
+          "image_id",
+          "image_url",
+          "width",
+          "height",
+          "native_width",
+          "native_height",
+          "model",
+          "cached",
+          "reason"
+        ],
+        "title": "CandidateCreatedEvent",
+        "type": "object"
+      },
+      "CandidateView": {
+        "properties": {
+          "attempt": {
+            "title": "Attempt",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "evaluation": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/EvaluationView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Height"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id"
+          },
+          "image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Url"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "parent_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Candidate Id"
+          },
+          "prompt_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Version"
+          },
+          "repair_instruction": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repair Instruction"
+          },
+          "requested_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Requested Model"
+          },
+          "served_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Served Model"
+          },
+          "slot": {
+            "title": "Slot",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Width"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "attempt",
+          "slot",
+          "status",
+          "parent_candidate_id",
+          "image_id",
+          "image_url",
+          "width",
+          "height",
+          "requested_model",
+          "served_model",
+          "prompt_version",
+          "repair_instruction",
+          "created_at",
+          "evaluation"
+        ],
+        "title": "CandidateView",
+        "type": "object"
+      },
+      "CheckView": {
+        "properties": {
+          "check_name": {
+            "title": "Check Name",
+            "type": "string"
+          },
+          "dimension": {
+            "title": "Dimension",
+            "type": "string"
+          },
+          "evidence": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence"
+          },
+          "evidence_data": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Data"
+          },
+          "method": {
+            "title": "Method",
+            "type": "string"
+          },
+          "passed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Passed"
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "dimension",
+          "check_name",
+          "method",
+          "value",
+          "threshold",
+          "passed",
+          "evidence"
+        ],
+        "title": "CheckView",
+        "type": "object"
+      },
+      "CompleteRequest": {
+        "properties": {
+          "prompt": {
+            "minLength": 1,
+            "title": "Prompt",
+            "type": "string"
+          }
+        },
+        "required": [
+          "prompt"
+        ],
+        "title": "CompleteRequest",
+        "type": "object"
+      },
+      "CompleteResponse": {
+        "properties": {
+          "cached": {
+            "title": "Cached",
+            "type": "boolean"
+          },
+          "latency_ms": {
+            "title": "Latency Ms",
+            "type": "integer"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "model",
+          "cached",
+          "latency_ms",
+          "request_id"
+        ],
+        "title": "CompleteResponse",
+        "type": "object"
+      },
+      "Confusion": {
+        "properties": {
+          "fn": {
+            "default": 0,
+            "title": "Fn",
+            "type": "integer"
+          },
+          "fp": {
+            "default": 0,
+            "title": "Fp",
+            "type": "integer"
+          },
+          "tn": {
+            "default": 0,
+            "title": "Tn",
+            "type": "integer"
+          },
+          "tp": {
+            "default": 0,
+            "title": "Tp",
+            "type": "integer"
+          }
+        },
+        "title": "Confusion",
+        "type": "object"
+      },
+      "Criterion": {
+        "properties": {
+          "baseline": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseline"
+          },
+          "criterion": {
+            "title": "Criterion",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "met": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Met"
+          },
+          "metric": {
+            "title": "Metric",
+            "type": "string"
+          },
+          "note": {
+            "default": "",
+            "title": "Note",
+            "type": "string"
+          },
+          "now": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Now"
+          },
+          "target": {
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "criterion",
+          "metric",
+          "target"
+        ],
+        "title": "Criterion",
+        "type": "object"
+      },
+      "DecisionCreate": {
+        "description": "A human release decision; approving a `needs_review` run is an override (needs a reason).",
+        "properties": {
+          "action": {
+            "enum": [
+              "approve",
+              "reject"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "actor": {
+            "default": "reviewer",
+            "description": "Who decides; recorded in the audit row and as labeller human:<actor>",
+            "pattern": "^[A-Za-z0-9._@-]{1,48}$",
+            "title": "Actor",
+            "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Required to approve a needs_review run (an override of the gate)",
+            "title": "Reason"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "title": "DecisionCreate",
+        "type": "object"
+      },
+      "DecisionView": {
+        "properties": {
+          "action": {
+            "enum": [
+              "approve",
+              "reject"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "actor": {
+            "title": "Actor",
+            "type": "string"
+          },
+          "approved_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved Candidate Id"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_override": {
+            "title": "Is Override",
+            "type": "boolean"
+          },
+          "label_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The labels row an override wrote (labeller human:<actor>)",
+            "title": "Label Id"
+          },
+          "previous_status": {
+            "title": "Previous Status",
+            "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "approved",
+              "rejected"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "run_id",
+          "action",
+          "reason",
+          "actor",
+          "previous_status",
+          "status",
+          "is_override",
+          "approved_candidate_id",
+          "created_at"
+        ],
+        "title": "DecisionView",
+        "type": "object"
+      },
+      "DimensionMetrics": {
+        "properties": {
+          "confusion": {
+            "$ref": "#/components/schemas/Confusion"
+          },
+          "f1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "F1"
+          },
+          "n": {
+            "default": 0,
+            "title": "N",
+            "type": "integer"
+          },
+          "not_assessed": {
+            "default": 0,
+            "description": "Items where this dimension was not evaluated (technical failed)",
+            "title": "Not Assessed",
+            "type": "integer"
+          },
+          "precision": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precision"
+          },
+          "recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall"
+          },
+          "unlabelled": {
+            "default": 0,
+            "title": "Unlabelled",
+            "type": "integer"
+          }
+        },
+        "title": "DimensionMetrics",
+        "type": "object"
+      },
+      "DimensionSummary": {
+        "properties": {
+          "confusion": {
+            "$ref": "#/components/schemas/Confusion"
+          },
+          "f1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "F1"
+          },
+          "n": {
+            "title": "N",
+            "type": "integer"
+          },
+          "precision": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precision"
+          },
+          "recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall"
+          }
+        },
+        "required": [
+          "precision",
+          "recall",
+          "f1",
+          "n",
+          "confusion"
+        ],
+        "title": "DimensionSummary",
+        "type": "object"
+      },
+      "DimensionView": {
+        "properties": {
+          "passed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "null = unverified",
+            "title": "Passed"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reasons",
+            "type": "array"
+          }
+        },
+        "required": [
+          "passed"
+        ],
+        "title": "DimensionView",
+        "type": "object"
+      },
+      "DoneEvent": {
+        "properties": {
+          "cached": {
+            "default": false,
+            "title": "Cached",
+            "type": "boolean"
+          },
+          "latency_ms": {
+            "default": 0,
+            "title": "Latency Ms",
+            "type": "integer"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "type": {
+            "const": "done",
+            "default": "done",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "model",
+          "latency_ms",
+          "cached"
+        ],
+        "title": "DoneEvent",
+        "type": "object"
+      },
+      "ErrorEvent": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "const": "error",
+            "default": "error",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "code",
+          "message"
+        ],
+        "title": "ErrorEvent",
+        "type": "object"
+      },
+      "EvalItem": {
+        "description": "One labelled item with its evaluator verdict (planted-failure gallery and drill-down).",
+        "properties": {
+          "aspect_ratio": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Aspect Ratio"
+          },
+          "brief_id": {
+            "title": "Brief Id",
+            "type": "string"
+          },
+          "dimensions": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Dimensions",
+            "type": "object"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "geography_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "From data/golden/briefs.yaml",
+            "title": "Geography Code"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id"
+          },
+          "image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Url"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "label_source": {
+            "title": "Label Source",
+            "type": "string"
+          },
+          "mutation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mutation"
+          },
+          "origin": {
+            "enum": [
+              "natural",
+              "planted"
+            ],
+            "title": "Origin",
+            "type": "string"
+          },
+          "outcomes": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "tp",
+                    "fp",
+                    "fn",
+                    "tn"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Outcomes",
+            "type": "object"
+          },
+          "product_id": {
+            "description": "Golden product key (P1..P5)",
+            "title": "Product Id",
+            "type": "string"
+          },
+          "product_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Product Name"
+          },
+          "required_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Required Text"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The golden run that produced this image (natural items)",
+            "title": "Run Id"
+          },
+          "season": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Season"
+          },
+          "set": {
+            "enum": [
+              "nat",
+              "final",
+              "plant"
+            ],
+            "title": "Set",
+            "type": "string"
+          },
+          "source_image_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Image Url"
+          },
+          "split": {
+            "enum": [
+              "calibration",
+              "heldout"
+            ],
+            "title": "Split",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          },
+          "verdict": {
+            "enum": [
+              "pass",
+              "fail",
+              "unverified"
+            ],
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "origin",
+          "set",
+          "brief_id",
+          "product_id",
+          "split",
+          "image_id",
+          "image_url",
+          "source_image_url",
+          "mutation",
+          "label_source",
+          "label",
+          "verdict",
+          "dimensions",
+          "outcomes",
+          "evidence"
+        ],
+        "title": "EvalItem",
+        "type": "object"
+      },
+      "EvalProvenance": {
+        "description": "Where the report's numbers come from (docs/ux.md `ReportProvenance`).",
+        "properties": {
+          "assume_pass_labels": {
+            "default": false,
+            "title": "Assume Pass Labels",
+            "type": "boolean"
+          },
+          "evaluator_version": {
+            "default": "",
+            "title": "Evaluator Version",
+            "type": "string"
+          },
+          "git_sha": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Git Sha"
+          },
+          "image_clients": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Image Clients",
+            "type": "array"
+          },
+          "image_models": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Image Models",
+            "type": "array"
+          },
+          "image_prompt_versions": {
+            "description": "`ad_generate`/`ad_repair` versions in the outputs",
+            "items": {
+              "type": "string"
+            },
+            "title": "Image Prompt Versions",
+            "type": "array"
+          },
+          "judge_client": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Vision judge client (fake|google)",
+            "title": "Judge Client"
+          },
+          "judge_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Judge Model"
+          },
+          "network_attempts": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Network Attempts"
+          },
+          "ocr_engine": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Engine"
+          },
+          "ocr_languages": {
+            "description": "Tesseract language packs installed when the verdict snapshot was recorded",
+            "items": {
+              "type": "string"
+            },
+            "title": "Ocr Languages",
+            "type": "array"
+          },
+          "ocr_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ocr Version"
+          },
+          "prompt_versions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Evaluator prompt name -> version",
+            "title": "Prompt Versions",
+            "type": "object"
+          },
+          "snapshot_entries": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Entries"
+          },
+          "snapshot_evaluator_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Evaluator Version"
+          },
+          "snapshot_file": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Verdict snapshot file name",
+            "title": "Snapshot File"
+          },
+          "snapshot_recorded_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Recorded At"
+          }
+        },
+        "title": "EvalProvenance",
+        "type": "object"
+      },
+      "EvalSummary": {
+        "description": "The latest eval report (architecture API contract `EvalSummary`, plus the PRD criteria).",
+        "properties": {
+          "after_repair_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Repair Pass Rate"
+          },
+          "agreement_by_dimension": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/AgreementMetrics"
+              },
+              "type": "object"
+            },
+            "description": "Human agreement per image set (nat|final) and dimension, with Cohen's kappa",
+            "title": "Agreement By Dimension",
+            "type": "object"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GoldenComparison"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "v1 -> v2: human and evaluator pass rates per dimension (incl. composition) and evaluator P/R per version; on the newest version's report"
+          },
+          "cost_per_approved_ad": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Per Approved Ad"
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "criteria": {
+            "items": {
+              "$ref": "#/components/schemas/Criterion"
+            },
+            "title": "Criteria",
+            "type": "array"
+          },
+          "dataset_version": {
+            "title": "Dataset Version",
+            "type": "string"
+          },
+          "dry_run": {
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "evaluator_version": {
+            "title": "Evaluator Version",
+            "type": "string"
+          },
+          "first_attempt_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Attempt Pass Rate"
+          },
+          "git_sha": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Git Sha"
+          },
+          "golden_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Golden dataset version (v1 | v2) of this report",
+            "title": "Golden Version"
+          },
+          "hemisphere": {
+            "$ref": "#/components/schemas/RateMetric"
+          },
+          "human_agreement": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Human Agreement"
+          },
+          "human_agreement_n": {
+            "title": "Human Agreement N",
+            "type": "integer"
+          },
+          "human_kappa": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Human Kappa"
+          },
+          "judge_stability_flip_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Judge Stability Flip Rate"
+          },
+          "known_good": {
+            "$ref": "#/components/schemas/RateMetric"
+          },
+          "native_text_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Native Text Rate"
+          },
+          "p50_latency_to_approved_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P50 Latency To Approved Ms"
+          },
+          "p95_latency_to_approved_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P95 Latency To Approved Ms"
+          },
+          "per_dimension": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DimensionSummary"
+            },
+            "title": "Per Dimension",
+            "type": "object"
+          },
+          "per_split": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/DimensionSummary"
+              },
+              "type": "object"
+            },
+            "title": "Per Split",
+            "type": "object"
+          },
+          "pipeline": {
+            "$ref": "#/components/schemas/PipelineMetrics",
+            "description": "Pipeline quality on the golden runs: mean_repairs, status_counts (runs by status), pass rates, cost and latency"
+          },
+          "planted": {
+            "items": {
+              "$ref": "#/components/schemas/PlantedClassMetrics"
+            },
+            "title": "Planted",
+            "type": "array"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/EvalProvenance"
+          },
+          "report_file": {
+            "title": "Report File",
+            "type": "string"
+          },
+          "report_id": {
+            "format": "uuid",
+            "title": "Report Id",
+            "type": "string"
+          },
+          "stability": {
+            "$ref": "#/components/schemas/StabilityMetrics"
+          },
+          "targets": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Targets",
+            "type": "object"
+          },
+          "text_exact_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Exact Rate"
+          },
+          "warnings": {
+            "description": "FAKE DRY RUN, missing labels, stale snapshot/report and the report's own",
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "report_id",
+          "created_at",
+          "evaluator_version",
+          "dataset_version",
+          "git_sha",
+          "dry_run",
+          "report_file",
+          "per_dimension",
+          "per_split",
+          "human_agreement",
+          "human_agreement_n",
+          "human_kappa",
+          "first_attempt_pass_rate",
+          "after_repair_pass_rate",
+          "native_text_rate",
+          "text_exact_rate",
+          "cost_per_approved_ad",
+          "p50_latency_to_approved_ms",
+          "p95_latency_to_approved_ms",
+          "judge_stability_flip_rate",
+          "planted",
+          "known_good",
+          "criteria",
+          "targets",
+          "counts"
+        ],
+        "title": "EvalSummary",
+        "type": "object"
+      },
+      "EvaluationDoneEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "candidate_id": {
+            "format": "uuid",
+            "title": "Candidate Id",
+            "type": "string"
+          },
+          "dimensions": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DimensionView"
+            },
+            "propertyNames": {
+              "enum": [
+                "technical",
+                "text",
+                "product",
+                "context",
+                "composition"
+              ]
+            },
+            "title": "Dimensions",
+            "type": "object"
+          },
+          "evaluation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evaluation Id"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "type": {
+            "const": "evaluation.done",
+            "default": "evaluation.done",
+            "title": "Type",
+            "type": "string"
+          },
+          "verdict": {
+            "enum": [
+              "pass",
+              "fail",
+              "unverified"
+            ],
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "candidate_id",
+          "evaluation_id",
+          "verdict",
+          "dimensions"
+        ],
+        "title": "EvaluationDoneEvent",
+        "type": "object"
+      },
+      "EvaluationView": {
+        "properties": {
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/CheckView"
+            },
+            "title": "Checks",
+            "type": "array"
+          },
+          "dimensions": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Dimensions",
+            "type": "object"
+          },
+          "evaluator_version": {
+            "title": "Evaluator Version",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "latency_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latency Ms"
+          },
+          "overall_pass": {
+            "title": "Overall Pass",
+            "type": "boolean"
+          },
+          "verdict": {
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "evaluator_version",
+          "verdict",
+          "overall_pass",
+          "dimensions",
+          "checks",
+          "latency_ms"
+        ],
+        "title": "EvaluationView",
+        "type": "object"
+      },
+      "FallbackAppliedEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "candidate_id": {
+            "format": "uuid",
+            "title": "Candidate Id",
+            "type": "string"
+          },
+          "from_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Candidate Id"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "type": {
+            "const": "fallback.applied",
+            "default": "fallback.applied",
+            "title": "Type",
+            "type": "string"
+          },
+          "verification": {
+            "anyOf": [
+              {
+                "enum": [
+                  "ocr",
+                  "construction",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "How the overlaid text was verified (ai-design \u00a74.4 step 5)",
+            "title": "Verification"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "candidate_id",
+          "reason"
+        ],
+        "title": "FallbackAppliedEvent",
+        "type": "object"
+      },
+      "GoldenComparison": {
+        "description": "v1 (baseline, orchestrator-3) vs v2 (ADR-007, orchestrator-4), in version order.",
+        "properties": {
+          "versions": {
+            "items": {
+              "$ref": "#/components/schemas/VersionSummary"
+            },
+            "title": "Versions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "versions"
+        ],
+        "title": "GoldenComparison",
+        "type": "object"
+      },
+      "GoldenProductSource": {
+        "properties": {
+          "author": {
+            "title": "Author",
+            "type": "string"
+          },
+          "file": {
+            "title": "File",
+            "type": "string"
+          },
+          "id": {
+            "description": "Golden product key (P1..P5)",
+            "title": "Id",
+            "type": "string"
+          },
+          "licence": {
+            "title": "Licence",
+            "type": "string"
+          },
+          "licence_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licence Url"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Product name from briefs.yaml",
+            "title": "Name"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "share_alike": {
+            "title": "Share Alike",
+            "type": "boolean"
+          },
+          "source_title": {
+            "title": "Source Title",
+            "type": "string"
+          },
+          "source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Url"
+          }
+        },
+        "required": [
+          "id",
+          "file",
+          "role",
+          "source_title",
+          "source_url",
+          "author",
+          "licence",
+          "licence_url",
+          "share_alike"
+        ],
+        "title": "GoldenProductSource",
+        "type": "object"
+      },
+      "GoldenSources": {
+        "properties": {
+          "markdown": {
+            "description": "SOURCES.md verbatim (render as markdown)",
+            "title": "Markdown",
+            "type": "string"
+          },
+          "path": {
+            "description": "Repository path of the sources file",
+            "title": "Path",
+            "type": "string"
+          },
+          "products": {
+            "items": {
+              "$ref": "#/components/schemas/GoldenProductSource"
+            },
+            "title": "Products",
+            "type": "array"
+          }
+        },
+        "required": [
+          "path",
+          "markdown",
+          "products"
+        ],
+        "title": "GoldenSources",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "const": "ok",
+            "default": "ok",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "ModelRow": {
+        "properties": {
+          "breaker": {
+            "default": "closed",
+            "title": "Breaker",
+            "type": "string"
+          },
+          "client": {
+            "description": "gemini | fake",
+            "title": "Client",
+            "type": "string"
+          },
+          "configured": {
+            "title": "Configured",
+            "type": "boolean"
+          },
+          "recorded_as": {
+            "description": "The model id calls are recorded under in the ledger",
+            "title": "Recorded As",
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "image_candidate",
+              "image_repair",
+              "vision_judge"
+            ],
+            "title": "Role",
+            "type": "string"
+          },
+          "spec": {
+            "description": "The configured model (IMAGE_MODEL_* / VISION_JUDGE)",
+            "title": "Spec",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "spec",
+          "client",
+          "recorded_as",
+          "configured"
+        ],
+        "title": "ModelRow",
+        "type": "object"
+      },
+      "NormBoxView": {
+        "properties": {
+          "x0": {
+            "title": "X0",
+            "type": "number"
+          },
+          "x1": {
+            "title": "X1",
+            "type": "number"
+          },
+          "y0": {
+            "title": "Y0",
+            "type": "number"
+          },
+          "y1": {
+            "title": "Y1",
+            "type": "number"
+          }
+        },
+        "required": [
+          "x0",
+          "y0",
+          "x1",
+          "y1"
+        ],
+        "title": "NormBoxView",
+        "type": "object"
+      },
+      "OcrStatus": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "engine": {
+            "title": "Engine",
+            "type": "string"
+          },
+          "languages": {
+            "description": "Installed Tesseract language packs",
+            "title": "Languages",
+            "type": "integer"
+          },
+          "scripts": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "description": "Scripts with an OCR pack (others are verified by construction after overlay)",
+            "title": "Scripts",
+            "type": "object"
+          },
+          "shaping": {
+            "description": "libraqm available for complex-script overlay",
+            "title": "Shaping",
+            "type": "boolean"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "engine",
+          "available",
+          "version",
+          "languages",
+          "scripts",
+          "shaping"
+        ],
+        "title": "OcrStatus",
+        "type": "object"
+      },
+      "OpsSummary": {
+        "properties": {
+          "avg_cost_usd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avg Cost Usd"
+          },
+          "by_kind": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Kind",
+            "type": "object"
+          },
+          "cache_hit_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cache Hit Rate"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "error_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Rate"
+          },
+          "fallback_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fallback Rate"
+          },
+          "p50_latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P50 Latency Ms"
+          },
+          "p95_latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P95 Latency Ms"
+          },
+          "runs": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Run metrics over the most recent `run_window` runs"
+          },
+          "total_cost_usd": {
+            "title": "Total Cost Usd",
+            "type": "number"
+          },
+          "window": {
+            "title": "Window",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "window",
+          "count",
+          "by_kind",
+          "p50_latency_ms",
+          "p95_latency_ms",
+          "total_cost_usd",
+          "avg_cost_usd",
+          "cache_hit_rate",
+          "fallback_rate",
+          "error_rate"
+        ],
+        "title": "OpsSummary",
+        "type": "object"
+      },
+      "Page_EvalItem_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EvalItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Opaque; pass as `cursor` to get the next page.",
+            "title": "Next Cursor"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "Page[EvalItem]",
+        "type": "object"
+      },
+      "Page_Product_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Opaque; pass as `cursor` to get the next page.",
+            "title": "Next Cursor"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "Page[Product]",
+        "type": "object"
+      },
+      "Page_RunSummary_": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RunSummary"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Opaque; pass as `cursor` to get the next page.",
+            "title": "Next Cursor"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "Page[RunSummary]",
+        "type": "object"
+      },
+      "PipelineMetrics": {
+        "properties": {
+          "after_repair_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Repair Pass Rate"
+          },
+          "briefs": {
+            "default": 0,
+            "title": "Briefs",
+            "type": "integer"
+          },
+          "cost_per_approved_ad": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Per Approved Ad"
+          },
+          "first_attempt_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Attempt Pass Rate"
+          },
+          "hue_drift_by_product": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Hue Drift By Product",
+            "type": "object"
+          },
+          "hue_drift_n": {
+            "default": 0,
+            "title": "Hue Drift N",
+            "type": "integer"
+          },
+          "hue_drift_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hue Drift Rate"
+          },
+          "images_checked": {
+            "default": 0,
+            "title": "Images Checked",
+            "type": "integer"
+          },
+          "mean_repairs": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Repairs"
+          },
+          "minor_label_detail_n": {
+            "default": 0,
+            "title": "Minor Label Detail N",
+            "type": "integer"
+          },
+          "minor_label_detail_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minor Label Detail Rate"
+          },
+          "native_text_n": {
+            "default": 0,
+            "title": "Native Text N",
+            "type": "integer"
+          },
+          "native_text_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Native Text Rate"
+          },
+          "p50_latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P50 Latency Ms"
+          },
+          "p95_latency_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P95 Latency Ms"
+          },
+          "resolution_ok_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolution Ok Rate"
+          },
+          "shipped": {
+            "default": 0,
+            "title": "Shipped",
+            "type": "integer"
+          },
+          "status_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Status Counts",
+            "type": "object"
+          },
+          "text_exact_construction": {
+            "default": 0,
+            "title": "Text Exact Construction",
+            "type": "integer"
+          },
+          "text_exact_ocr": {
+            "default": 0,
+            "title": "Text Exact Ocr",
+            "type": "integer"
+          },
+          "text_exact_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Exact Rate"
+          },
+          "total_cost_usd": {
+            "default": 0.0,
+            "title": "Total Cost Usd",
+            "type": "number"
+          }
+        },
+        "title": "PipelineMetrics",
+        "type": "object"
+      },
+      "PlanDoneEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "spec_summary": {
+            "$ref": "#/components/schemas/SpecSummary"
+          },
+          "type": {
+            "const": "plan.done",
+            "default": "plan.done",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "spec_summary"
+        ],
+        "title": "PlanDoneEvent",
+        "type": "object"
+      },
+      "PlantedClassMetrics": {
+        "properties": {
+          "caught": {
+            "title": "Caught",
+            "type": "integer"
+          },
+          "expected": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Expected",
+            "type": "array"
+          },
+          "missed": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missed",
+            "type": "array"
+          },
+          "mutation": {
+            "title": "Mutation",
+            "type": "string"
+          },
+          "n": {
+            "title": "N",
+            "type": "integer"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          }
+        },
+        "required": [
+          "mutation",
+          "expected",
+          "n",
+          "caught",
+          "rate"
+        ],
+        "title": "PlantedClassMetrics",
+        "type": "object"
+      },
+      "Product": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "facts_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Facts Version"
+          },
+          "height": {
+            "title": "Height",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "image_id": {
+            "format": "uuid",
+            "title": "Image Id",
+            "type": "string"
+          },
+          "image_url": {
+            "title": "Image Url",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "reference_facts": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Vision product profile; null until it has been extracted.",
+            "title": "Reference Facts"
+          },
+          "width": {
+            "title": "Width",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "image_id",
+          "image_url",
+          "width",
+          "height",
+          "created_at"
+        ],
+        "title": "Product",
+        "type": "object"
+      },
+      "ProductScaleView": {
+        "description": "ADR-007: how big the product should be (its longest side / the image height).",
+        "properties": {
+          "framing": {
+            "description": "close_up | medium | wide",
+            "title": "Framing",
+            "type": "string"
+          },
+          "resting_surface": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resting Surface"
+          },
+          "scale_max": {
+            "title": "Scale Max",
+            "type": "number"
+          },
+          "scale_min": {
+            "title": "Scale Min",
+            "type": "number"
+          },
+          "scale_references": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scale References",
+            "type": "array"
+          },
+          "size_class": {
+            "title": "Size Class",
+            "type": "string"
+          },
+          "size_cm": {
+            "description": "The product's real-world largest dimension",
+            "title": "Size Cm",
+            "type": "number"
+          }
+        },
+        "required": [
+          "framing",
+          "scale_min",
+          "scale_max",
+          "size_cm",
+          "size_class"
+        ],
+        "title": "ProductScaleView",
+        "type": "object"
+      },
+      "ProviderStatus": {
+        "properties": {
+          "breaker": {
+            "default": "closed",
+            "title": "Breaker",
+            "type": "string"
+          },
+          "configured": {
+            "title": "Configured",
+            "type": "boolean"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "spec": {
+            "title": "Spec",
+            "type": "string"
+          }
+        },
+        "required": [
+          "spec",
+          "provider",
+          "role",
+          "configured"
+        ],
+        "title": "ProviderStatus",
+        "type": "object"
+      },
+      "RateMetric": {
+        "properties": {
+          "n": {
+            "default": 0,
+            "title": "N",
+            "type": "integer"
+          },
+          "ok": {
+            "default": 0,
+            "title": "Ok",
+            "type": "integer"
+          },
+          "rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rate"
+          }
+        },
+        "title": "RateMetric",
+        "type": "object"
+      },
+      "ReadyResponse": {
+        "properties": {
+          "adstudio": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AdStudioStatus"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Image-model, vision-judge and OCR rows for the status page"
+          },
+          "db": {
+            "title": "Db",
+            "type": "boolean"
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "extensions": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "title": "Extensions",
+            "type": "object"
+          },
+          "providers": {
+            "items": {
+              "$ref": "#/components/schemas/ProviderStatus"
+            },
+            "title": "Providers",
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "ok",
+              "degraded",
+              "unavailable"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "db",
+          "extensions",
+          "providers"
+        ],
+        "title": "ReadyResponse",
+        "type": "object"
+      },
+      "RepairStartedEvent": {
+        "properties": {
+          "action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "regenerate | repair_product | repair_context | repair_composition | repair_text | clean_plate",
+            "title": "Action"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "attempt": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attempt"
+          },
+          "from_candidate_id": {
+            "format": "uuid",
+            "title": "From Candidate Id",
+            "type": "string"
+          },
+          "instruction": {
+            "description": "Summary of the edit (code-built, never VLM prose)",
+            "title": "Instruction",
+            "type": "string"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "row": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Routing-table row (ai-design \u00a74.3)",
+            "title": "Row"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "target_dimension": {
+            "enum": [
+              "technical",
+              "text",
+              "product",
+              "context",
+              "composition"
+            ],
+            "title": "Target Dimension",
+            "type": "string"
+          },
+          "type": {
+            "const": "repair.started",
+            "default": "repair.started",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "from_candidate_id",
+          "target_dimension",
+          "instruction"
+        ],
+        "title": "RepairStartedEvent",
+        "type": "object"
+      },
+      "ResultEvent": {
+        "properties": {
+          "data": {
+            "title": "Data"
+          },
+          "type": {
+            "const": "result",
+            "default": "result",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "data"
+        ],
+        "title": "ResultEvent",
+        "type": "object"
+      },
+      "RunAccepted": {
+        "properties": {
+          "brief_id": {
+            "format": "uuid",
+            "title": "Brief Id",
+            "type": "string"
+          },
+          "events_url": {
+            "title": "Events Url",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "run_url": {
+            "title": "Run Url",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "brief_id",
+          "status",
+          "events_url",
+          "run_url"
+        ],
+        "title": "RunAccepted",
+        "type": "object"
+      },
+      "RunCancelled": {
+        "properties": {
+          "cancelled": {
+            "description": "False when the run ended on its own first",
+            "title": "Cancelled",
+            "type": "boolean"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "status",
+          "cancelled"
+        ],
+        "title": "RunCancelled",
+        "type": "object"
+      },
+      "RunCreate": {
+        "description": "A brief to run. `required_text` is rendered exactly as given (after NFC).",
+        "properties": {
+          "aspect_ratio": {
+            "default": "4:5",
+            "enum": [
+              "1:1",
+              "4:5"
+            ],
+            "title": "Aspect Ratio",
+            "type": "string"
+          },
+          "fresh": {
+            "default": false,
+            "description": "Salt the image cache so a repeat makes new images",
+            "title": "Fresh",
+            "type": "boolean"
+          },
+          "geography_code": {
+            "description": "ISO 3166-1 alpha-2 country code",
+            "pattern": "^[A-Za-z]{2}$",
+            "title": "Geography Code",
+            "type": "string"
+          },
+          "geography_detail": {
+            "anyOf": [
+              {
+                "maxLength": 120,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Optional region or city (alias table only)",
+            "title": "Geography Detail"
+          },
+          "product_id": {
+            "format": "uuid",
+            "title": "Product Id",
+            "type": "string"
+          },
+          "required_text": {
+            "description": "1-80 characters, at most 3 lines",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Required Text",
+            "type": "string"
+          },
+          "season": {
+            "description": "Month, season name or holiday, e.g. December",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Season",
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "geography_code",
+          "season",
+          "required_text"
+        ],
+        "title": "RunCreate",
+        "type": "object"
+      },
+      "RunDetail": {
+        "properties": {
+          "approved_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved Candidate Id"
+          },
+          "best_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The candidate to review: the approved one, or the best one on needs_review",
+            "title": "Best Candidate Id"
+          },
+          "brief": {
+            "$ref": "#/components/schemas/BriefView"
+          },
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/CandidateView"
+            },
+            "title": "Candidates",
+            "type": "array"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "events_url": {
+            "title": "Events Url",
+            "type": "string"
+          },
+          "latency_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latency Ms"
+          },
+          "product_id": {
+            "format": "uuid",
+            "title": "Product Id",
+            "type": "string"
+          },
+          "run": {
+            "$ref": "#/components/schemas/RunView"
+          },
+          "spec": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spec"
+          },
+          "spec_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spec Version"
+          }
+        },
+        "required": [
+          "run",
+          "brief",
+          "product_id",
+          "spec",
+          "spec_version",
+          "candidates",
+          "approved_candidate_id",
+          "cost_usd",
+          "latency_ms",
+          "events_url"
+        ],
+        "title": "RunDetail",
+        "type": "object"
+      },
+      "RunErrorEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "problem": {
+            "additionalProperties": true,
+            "title": "Problem",
+            "type": "object"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "type": {
+            "const": "run.error",
+            "default": "run.error",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "problem"
+        ],
+        "title": "RunErrorEvent",
+        "type": "object"
+      },
+      "RunFinishedEvent": {
+        "properties": {
+          "approved_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved Candidate Id"
+          },
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "best_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "needs_review: the candidate shown for the human decision",
+            "title": "Best Candidate Id"
+          },
+          "cost_usd": {
+            "default": 0.0,
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "latency_ms": {
+            "default": 0,
+            "title": "Latency Ms",
+            "type": "integer"
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "enum": [
+                  "native",
+                  "overlay"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outcome"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "needs_review",
+              "failed",
+              "interrupted",
+              "cancelled"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "type": {
+            "const": "run.finished",
+            "default": "run.finished",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "status",
+          "outcome",
+          "approved_candidate_id",
+          "cost_usd",
+          "latency_ms",
+          "reason"
+        ],
+        "title": "RunFinishedEvent",
+        "type": "object"
+      },
+      "RunMetrics": {
+        "description": "Run numbers over the most recent `window` runs (architecture \"Observability\").",
+        "properties": {
+          "active": {
+            "default": 0,
+            "title": "Active",
+            "type": "integer"
+          },
+          "approved": {
+            "description": "Runs a human approved",
+            "title": "Approved",
+            "type": "integer"
+          },
+          "approved_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "approved / finished",
+            "title": "Approved Rate"
+          },
+          "by_status": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "By Status",
+            "type": "object"
+          },
+          "cost_per_approved_ad": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Spend of every finished run / approved runs",
+            "title": "Cost Per Approved Ad"
+          },
+          "cost_per_gate_pass": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Spend of every finished run / runs whose gate passed",
+            "title": "Cost Per Gate Pass"
+          },
+          "count": {
+            "description": "Runs in the window",
+            "title": "Count",
+            "type": "integer"
+          },
+          "dimension_pass_rates": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "description": "Per dimension (technical, text, product, context, composition): passing / judged candidate evaluations of the window's runs (unverified and older evaluations without the dimension are left out)",
+            "title": "Dimension Pass Rates",
+            "type": "object"
+          },
+          "finished": {
+            "description": "Runs that reached a terminal or decided status",
+            "title": "Finished",
+            "type": "integer"
+          },
+          "first_attempt_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A first-round candidate passed / runs with candidates",
+            "title": "First Attempt Pass Rate"
+          },
+          "gate_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Runs whose gate passed a candidate (outcome set) / finished",
+            "title": "Gate Pass Rate"
+          },
+          "mean_repairs": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Repairs"
+          },
+          "overlay_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "outcome overlay / runs with an outcome",
+            "title": "Overlay Rate"
+          },
+          "override_count": {
+            "description": "Approved runs the gate had held (needs_review)",
+            "title": "Override Count",
+            "type": "integer"
+          },
+          "p50_ms_to_approved": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Pipeline latency (run created -> gate passed) of gate-passed runs, p50",
+            "title": "P50 Ms To Approved"
+          },
+          "p95_ms_to_approved": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P95 Ms To Approved"
+          },
+          "queued": {
+            "default": 0,
+            "title": "Queued",
+            "type": "integer"
+          },
+          "total_cost_usd": {
+            "title": "Total Cost Usd",
+            "type": "number"
+          },
+          "window": {
+            "title": "Window",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "window",
+          "count",
+          "by_status",
+          "finished",
+          "approved",
+          "approved_rate",
+          "gate_pass_rate",
+          "first_attempt_pass_rate",
+          "mean_repairs",
+          "overlay_rate",
+          "override_count",
+          "total_cost_usd",
+          "cost_per_approved_ad",
+          "cost_per_gate_pass",
+          "p50_ms_to_approved",
+          "p95_ms_to_approved"
+        ],
+        "title": "RunMetrics",
+        "type": "object"
+      },
+      "RunStatusEvent": {
+        "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "run_id": {
+            "format": "uuid",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "seq": {
+            "default": 0,
+            "description": "Per-run sequence; the SSE `id:`",
+            "title": "Seq",
+            "type": "integer"
+          },
+          "status": {
+            "enum": [
+              "queued",
+              "planning",
+              "generating",
+              "evaluating",
+              "repairing",
+              "fallback",
+              "passed",
+              "needs_review",
+              "failed",
+              "interrupted",
+              "cancelled",
+              "approved",
+              "rejected"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "type": {
+            "const": "run.status",
+            "default": "run.status",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "run_id",
+          "at",
+          "type",
+          "status"
+        ],
+        "title": "RunStatusEvent",
+        "type": "object"
+      },
+      "RunSummary": {
+        "properties": {
+          "approved_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved Candidate Id"
+          },
+          "aspect_ratio": {
+            "title": "Aspect Ratio",
+            "type": "string"
+          },
+          "best_candidate_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Best Candidate Id"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "first_attempt_pass": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Attempt Pass"
+          },
+          "geography_code": {
+            "title": "Geography Code",
+            "type": "string"
+          },
+          "golden_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Golden Key"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "latency_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latency Ms"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outcome"
+          },
+          "product_id": {
+            "format": "uuid",
+            "title": "Product Id",
+            "type": "string"
+          },
+          "repair_count": {
+            "title": "Repair Count",
+            "type": "integer"
+          },
+          "required_text": {
+            "title": "Required Text",
+            "type": "string"
+          },
+          "season": {
+            "title": "Season",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "thumbnail_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The approved candidate's image, else the best candidate's",
+            "title": "Thumbnail Url"
+          }
+        },
+        "required": [
+          "id",
+          "origin",
+          "status",
+          "outcome",
+          "product_id",
+          "geography_code",
+          "season",
+          "required_text",
+          "aspect_ratio",
+          "golden_key",
+          "first_attempt_pass",
+          "repair_count",
+          "cost_usd",
+          "latency_ms",
+          "approved_candidate_id",
+          "best_candidate_id",
+          "thumbnail_url",
+          "created_at",
+          "finished_at"
+        ],
+        "title": "RunSummary",
+        "type": "object"
+      },
+      "RunView": {
+        "properties": {
+          "config": {
+            "additionalProperties": true,
+            "title": "Config",
+            "type": "object"
+          },
+          "cost_usd": {
+            "title": "Cost Usd",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "first_attempt_pass": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Attempt Pass"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "latency_ms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latency Ms"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outcome"
+          },
+          "repair_count": {
+            "title": "Repair Count",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "origin",
+          "status",
+          "outcome",
+          "first_attempt_pass",
+          "repair_count",
+          "cost_usd",
+          "latency_ms",
+          "error",
+          "config",
+          "created_at",
+          "finished_at"
+        ],
+        "title": "RunView",
+        "type": "object"
+      },
+      "SpecSummary": {
+        "properties": {
+          "avoid": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Avoid",
+            "type": "array"
+          },
+          "country_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country Name"
+          },
+          "effective_season": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Season"
+          },
+          "hemisphere": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hemisphere"
+          },
+          "holidays": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Holidays",
+            "type": "array"
+          },
+          "locale_cues": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Locale Cues",
+            "type": "array"
+          },
+          "months": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Months",
+            "type": "array"
+          },
+          "planner_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planner Model"
+          },
+          "product_scale": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProductScaleView"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Framing and product scale (null when the size is unknown)"
+          },
+          "rationale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rationale"
+          },
+          "source": {
+            "enum": [
+              "template",
+              "planner",
+              "default_table"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "text_lines": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Text Lines",
+            "type": "array"
+          },
+          "text_mode": {
+            "default": "native",
+            "enum": [
+              "native",
+              "overlay_only"
+            ],
+            "title": "Text Mode",
+            "type": "string"
+          },
+          "text_zone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NormBoxView"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "title": "SpecSummary",
+        "type": "object"
+      },
+      "StabilityMetrics": {
+        "properties": {
+          "available": {
+            "default": false,
+            "title": "Available",
+            "type": "boolean"
+          },
+          "checks": {
+            "default": 0,
+            "title": "Checks",
+            "type": "integer"
+          },
+          "flip_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flip Rate"
+          },
+          "flips": {
+            "default": 0,
+            "title": "Flips",
+            "type": "integer"
+          },
+          "items": {
+            "default": 0,
+            "title": "Items",
+            "type": "integer"
+          }
+        },
+        "title": "StabilityMetrics",
+        "type": "object"
+      },
+      "StatusEvent": {
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "const": "status",
+            "default": "status",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "message"
+        ],
+        "title": "StatusEvent",
+        "type": "object"
+      },
+      "StepEvent": {
+        "properties": {
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "started",
+              "done",
+              "failed",
+              "skipped"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "type": {
+            "const": "step",
+            "default": "step",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "state",
+          "detail"
+        ],
+        "title": "StepEvent",
+        "type": "object"
+      },
+      "TokenEvent": {
+        "properties": {
+          "text": {
+            "title": "Text",
+            "type": "string"
+          },
+          "type": {
+            "const": "token",
+            "default": "token",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "text"
+        ],
+        "title": "TokenEvent",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "VersionSummary": {
+        "description": "One golden version's headline numbers for the v1 -> v2 comparison (ADR-007).",
+        "properties": {
+          "after_repair_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Repair Pass Rate"
+          },
+          "cost_per_approved_ad": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cost Per Approved Ad"
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "evaluator_pass_rates": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/RateMetric"
+              },
+              "type": "object"
+            },
+            "description": "set (nat|final) -> dimension -> share of images the evaluator passes",
+            "title": "Evaluator Pass Rates",
+            "type": "object"
+          },
+          "evaluator_version": {
+            "title": "Evaluator Version",
+            "type": "string"
+          },
+          "first_attempt_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Attempt Pass Rate"
+          },
+          "human_agreement": {
+            "$ref": "#/components/schemas/AgreementMetrics"
+          },
+          "human_pass_rates": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/RateMetric"
+              },
+              "type": "object"
+            },
+            "description": "set (nat|final) -> dimension -> share of human-labelled images passing",
+            "title": "Human Pass Rates",
+            "type": "object"
+          },
+          "per_dimension": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DimensionMetrics"
+            },
+            "title": "Per Dimension",
+            "type": "object"
+          },
+          "pipeline_versions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Pipeline Versions",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "evaluator_version"
+        ],
+        "title": "VersionSummary",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "ad-studio",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health_health",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/ready": {
+      "get": {
+        "operationId": "health_ready",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadyResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadyResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Ready",
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/v1/evals/items": {
+      "get": {
+        "description": "Labelled items of the latest report with their verdicts (planted-failure gallery and the\nTP/FP/FN/TN drill-down; `outcome` needs the positive class FAIL).",
+        "operationId": "evals_eval_items",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "origin",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "natural",
+                    "planted"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Origin"
+            }
+          },
+          {
+            "in": "query",
+            "name": "dimension",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "technical",
+                    "text",
+                    "product",
+                    "context",
+                    "composition"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dimension"
+            }
+          },
+          {
+            "in": "query",
+            "name": "outcome",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "tp",
+                    "fp",
+                    "fn",
+                    "tn"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Outcome"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "`next_cursor` of the previous page",
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "`next_cursor` of the previous page",
+              "title": "Cursor"
+            }
+          },
+          {
+            "description": "Golden dataset version (v1 | v2); default: the newest report of any version",
+            "in": "query",
+            "name": "golden_version",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "pattern": "^v[0-9]{1,3}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Golden dataset version (v1 | v2); default: the newest report of any version",
+              "title": "Golden Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_EvalItem_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "summary": "Eval Items",
+        "tags": [
+          "evals"
+        ]
+      }
+    },
+    "/v1/evals/summary": {
+      "get": {
+        "description": "The latest evaluator report: per-dimension precision/recall/F1, human agreement, pipeline\npass rates, text exactness, $/ad, latency and every PRD criterion with its target.",
+        "operationId": "evals_eval_summary",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "evaluator_version",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 32,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Evaluator Version"
+            }
+          },
+          {
+            "description": "Golden dataset version (v1 | v2); default: the newest report of any version",
+            "in": "query",
+            "name": "golden_version",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "pattern": "^v[0-9]{1,3}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Golden dataset version (v1 | v2); default: the newest report of any version",
+              "title": "Golden Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Eval Summary",
+        "tags": [
+          "evals"
+        ]
+      }
+    },
+    "/v1/golden/sources": {
+      "get": {
+        "description": "Where every golden reference photo comes from, its author and licence (SOURCES.md), plus\nthe product table parsed into rows.",
+        "operationId": "golden_golden_sources",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoldenSources"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          }
+        },
+        "summary": "Golden Sources",
+        "tags": [
+          "golden"
+        ]
+      }
+    },
+    "/v1/images/{image_id}": {
+      "get": {
+        "operationId": "images_get_image",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Image Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-none-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-None-Match"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "image/jpeg": {},
+              "image/png": {},
+              "image/webp": {}
+            },
+            "description": "Image bytes"
+          },
+          "304": {
+            "description": "Not modified (ETag matched)"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Image",
+        "tags": [
+          "images"
+        ]
+      }
+    },
+    "/v1/llm/complete": {
+      "post": {
+        "operationId": "llm_complete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompleteResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Complete",
+        "tags": [
+          "llm"
+        ]
+      }
+    },
+    "/v1/llm/stream": {
+      "post": {
+        "operationId": "llm_stream",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Stream",
+        "tags": [
+          "llm"
+        ]
+      }
+    },
+    "/v1/meta/run-events": {
+      "get": {
+        "description": "Schema carrier for the `GET /v1/runs/{id}/events` payloads (always empty).",
+        "operationId": "meta_run_events",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "discriminator": {
+                      "mapping": {
+                        "budget.warning": "#/components/schemas/BudgetWarningEvent",
+                        "candidate.created": "#/components/schemas/CandidateCreatedEvent",
+                        "evaluation.done": "#/components/schemas/EvaluationDoneEvent",
+                        "fallback.applied": "#/components/schemas/FallbackAppliedEvent",
+                        "plan.done": "#/components/schemas/PlanDoneEvent",
+                        "repair.started": "#/components/schemas/RepairStartedEvent",
+                        "run.error": "#/components/schemas/RunErrorEvent",
+                        "run.finished": "#/components/schemas/RunFinishedEvent",
+                        "run.status": "#/components/schemas/RunStatusEvent"
+                      },
+                      "propertyName": "type"
+                    },
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/RunStatusEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/PlanDoneEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/CandidateCreatedEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/EvaluationDoneEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/RepairStartedEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/FallbackAppliedEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/BudgetWarningEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/RunFinishedEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/RunErrorEvent"
+                      }
+                    ]
+                  },
+                  "title": "Response Meta Run Events",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Run Events",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/v1/meta/stream-events": {
+      "get": {
+        "operationId": "meta_stream_events",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "discriminator": {
+                      "mapping": {
+                        "done": "#/components/schemas/DoneEvent",
+                        "error": "#/components/schemas/ErrorEvent",
+                        "result": "#/components/schemas/ResultEvent",
+                        "status": "#/components/schemas/StatusEvent",
+                        "step": "#/components/schemas/StepEvent",
+                        "token": "#/components/schemas/TokenEvent"
+                      },
+                      "propertyName": "type"
+                    },
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/StatusEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/TokenEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/StepEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/ResultEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/ErrorEvent"
+                      },
+                      {
+                        "$ref": "#/components/schemas/DoneEvent"
+                      }
+                    ]
+                  },
+                  "title": "Response Meta Stream Events",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Stream Events",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/v1/ops/summary": {
+      "get": {
+        "operationId": "ops_summary",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "window",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Window",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "run_window",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Run Window",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpsSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Summary",
+        "tags": [
+          "ops"
+        ]
+      }
+    },
+    "/v1/products": {
+      "get": {
+        "operationId": "products_list_products",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 512,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_Product_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Products",
+        "tags": [
+          "products"
+        ]
+      },
+      "post": {
+        "description": "Upload a product photo. Idempotent by content: the same image returns the existing product\nwith 200. The client filename and content type are ignored.\n\nWhen a vision judge is configured the product profile (box, colours, label text as data) is\nextracted now and stored in `reference_facts`; otherwise it is `unverified` until a run can\ncompute it.",
+        "operationId": "products_create_product",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_products_create_product"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            },
+            "description": "The same image was uploaded before"
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "413": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Content Too Large"
+          },
+          "415": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unprocessable Content"
+          },
+          "429": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Too Many Requests"
+          }
+        },
+        "summary": "Create Product",
+        "tags": [
+          "products"
+        ]
+      }
+    },
+    "/v1/products/{product_id}": {
+      "get": {
+        "operationId": "products_get_product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "product_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Product Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Product",
+        "tags": [
+          "products"
+        ]
+      }
+    },
+    "/v1/runs": {
+      "get": {
+        "description": "Run history, newest first (cursor paging over created_at, id).",
+        "operationId": "runs_list_runs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "origin",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ui",
+                    "golden"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Origin"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "queued",
+                    "planning",
+                    "generating",
+                    "evaluating",
+                    "repairing",
+                    "fallback",
+                    "passed",
+                    "needs_review",
+                    "failed",
+                    "interrupted",
+                    "cancelled",
+                    "approved",
+                    "rejected"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "`next_cursor` of the previous page",
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "`next_cursor` of the previous page",
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_RunSummary_"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "summary": "List Runs",
+        "tags": [
+          "runs"
+        ]
+      },
+      "post": {
+        "description": "Start a run for a brief. Returns 202 at once; follow `events_url` (SSE) for progress.",
+        "operationId": "runs_create_run_route",
+        "parameters": [
+          {
+            "description": "Required. The same key and body return the original run.",
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "description": "Required. The same key and body return the original run.",
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Idempotency-Key",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunAccepted"
+                }
+              }
+            },
+            "description": "Replay of the same Idempotency-Key and body"
+          },
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunAccepted"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unprocessable Content"
+          },
+          "429": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Create Run Route",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/v1/runs/{run_id}": {
+      "get": {
+        "description": "The authoritative snapshot of a run (reload-safe; the UI rebuilds its timeline from it).",
+        "operationId": "runs_get_run",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Run",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/v1/runs/{run_id}/cancel": {
+      "post": {
+        "description": "Stop an active run: its task is cancelled and the run ends `cancelled`.",
+        "operationId": "runs_cancel_run",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunCancelled"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Cancel Run",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/v1/runs/{run_id}/decision": {
+      "post": {
+        "description": "Human release: approve or reject a `passed` / `needs_review` run (audited).\n\nApproving a `needs_review` run overrides the gate: `reason` is required, and the decision is\nalso stored as a human label on the approved image.",
+        "operationId": "runs_decide_run",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Unprocessable Content"
+          }
+        },
+        "summary": "Decide Run",
+        "tags": [
+          "runs"
+        ]
+      }
+    },
+    "/v1/runs/{run_id}/events": {
+      "get": {
+        "description": "SSE: replays events with `seq > Last-Event-ID`, then tails until `run.finished`, then closes.\n\nKeep-alive comments every 15 s. Works after the run has ended (full replay).",
+        "operationId": "runs_run_events",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Alternative to Last-Event-ID for clients without headers",
+            "in": "query",
+            "name": "after",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Alternative to Last-Event-ID for clients without headers",
+              "title": "After"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Last-Event-ID",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last-Event-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/event-stream": {}
+            },
+            "description": "RunEvent stream (see GET /v1/meta/run-events for the schema)"
+          },
+          "404": {
+            "content": {
+              "application/problem+json": {}
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Run Events",
+        "tags": [
+          "runs"
+        ]
+      }
+    }
+  }
+}

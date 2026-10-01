@@ -1,0 +1,19 @@
+{
+  "after_repair_pass_rate": 1.0,
+  "cost_per_approved_ad": 0.08761605,
+  "first_attempt_pass_rate": 0.95,
+  "hemisphere_accuracy": 1.0,
+  "human_agreement": 0.75,
+  "network_calls": 0.0,
+  "p50_latency_ms": 48589.0,
+  "precision.composition": 0.35294117647058826,
+  "precision.context": 0.5555555555555556,
+  "precision.product": 1.0,
+  "precision.text": 0.5217391304347826,
+  "recall.composition": 0.5,
+  "recall.context": 0.8333333333333334,
+  "recall.product": 0.6470588235294118,
+  "recall.text": 0.6666666666666666,
+  "resolution_ok_rate": 1.0,
+  "text_exact_rate": 1.0
+}

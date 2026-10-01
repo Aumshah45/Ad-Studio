@@ -1,0 +1,13 @@
+# The full golden dataset (including the ~124 MB of generated `outputs/` images) is committed so
+# that a clone/pull is fully testable and reproducible: `make eval` replays the real images and the
+# data-dependent tests pass.
+#
+# `export-ignore` omits these large folders from `git archive` and GitHub's "Download ZIP" ONLY —
+# never from a clone/pull — so the downloadable source ZIP stays small (about 16 MB)
+# while a clone stays complete.
+data/golden/v1/outputs export-ignore
+data/golden/v1/outputs/** export-ignore
+data/golden/v2/outputs export-ignore
+data/golden/v2/outputs/** export-ignore
+data/golden/v3/outputs export-ignore
+data/golden/v3/outputs/** export-ignore

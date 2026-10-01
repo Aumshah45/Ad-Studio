@@ -1,0 +1,101 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: read # gitleaks lists the PR's commits
+
+jobs:
+  api:
+    # arm64 macOS, like the machine that recorded the golden snapshots: their cache keys hash PNG
+    # bytes, and Pillow's bundled zlib-ng compresses differently on x86, so replay misses there.
+    runs-on: macos-latest
+    env:
+      TEST_DATABASE_URL: postgresql+psycopg://localhost:5432/app_test
+      DATABASE_URL: postgresql+psycopg://localhost:5432/app_test
+      OTEL_ENABLED: "false"
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+    defaults:
+      run:
+        working-directory: services/api
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - name: Install Postgres 17, pgvector, Tesseract, libraqm and Homebrew Python
+        # Pillow's libraqm (complex-script shaping: Devanagari, Thai, Arabic) dlopens fribidi by leaf
+        # name. Homebrew's Python carries LC_RPATH /opt/homebrew/lib, so it finds Homebrew's fribidi
+        # natively; the runner's python.org Python does not, and DYLD_* variables are stripped by
+        # SIP. So uv is pointed at Homebrew's Python, matching the machine that recorded the goldens.
+        run: |
+          brew install postgresql@17 pgvector tesseract tesseract-lang libraqm python@3.13
+          echo "UV_PYTHON=$(brew --prefix python@3.13)/bin/python3.13" >> "$GITHUB_ENV"
+      - name: Start Postgres
+        run: |
+          PG="$(brew --prefix postgresql@17)/bin"
+          brew services start postgresql@17
+          for _ in $(seq 30); do "$PG/pg_isready" -h localhost && break; sleep 1; done
+          "$PG/createdb" -h localhost app_test
+          "$PG/psql" -h localhost -d app_test -c \
+            "CREATE EXTENSION IF NOT EXISTS vector; CREATE EXTENSION IF NOT EXISTS pg_trgm; CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;"
+      - run: uv sync
+      - name: Check Pillow can shape complex scripts (libraqm + fribidi)
+        run: uv run python -c "from PIL import features; assert features.check('raqm'), 'Pillow cannot load libraqm/fribidi'"
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pyright
+      - run: uv run pytest -q
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: apps/web/package.json
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: apps/web/package.json
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: cd services/api && uv sync
+      - run: pnpm -C apps/web install --frozen-lockfile
+      - name: Regenerate client and fail on drift
+        env:
+          OTEL_ENABLED: "false"
+        run: make contract-check
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}

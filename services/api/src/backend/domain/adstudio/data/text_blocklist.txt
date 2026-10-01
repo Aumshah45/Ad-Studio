@@ -1,0 +1,34 @@
+# Brand-safety blocklist for `required_text` (ai-design §9.7 RT-09): 422 `text-policy`.
+# One term or phrase per line, lower case. Matched on whole words after NFKC, casefold and
+# undoing common character swaps (0->o, 1->i, 3->e, 4->a, 5->s, 7->t, @->a, $->s), so
+# "Scunthorpe" or "cocktail" are not hit. Human-maintained: extend with slurs and market-specific
+# terms at review time (production-readiness T5); a hit is never shown back to the user.
+# Words with common innocent uses (brand names, colours, animals, names) are left out on purpose.
+porn
+porno
+pornography
+xxx
+nsfw
+blowjob
+handjob
+dildo
+cumshot
+milf
+hentai
+fuck
+fucking
+fucker
+motherfucker
+shit
+bullshit
+cunt
+bitch
+whore
+slut
+asshole
+wanker
+twat
+kill yourself
+kys
+heil hitler
+white power

@@ -1,0 +1,49 @@
+image_sha,set,brief_id,technical,text,product,context,composition,notes,rubric_version
+25beabb5fbd7fc533c6432d2e8fa5bae5e92a418a577ab8de125c6fad6c98199,nat,B01,pass,pass,pass,pass,pass,,2
+2646ba771458af54d257bc407b9b568b5772199a724d2cebdb0b901b17281595,final,B01,pass,pass,pass,pass,pass,,2
+43d21199a3056d9c95faa34b5138cfefae38c4d022327e90ae79a2c9273e351c,nat,B02,pass,pass,pass,pass,pass,,2
+0b6afea07b65193beb27eabe5f0107602bc6039cab060e21dc774c39a86f04ae,final,B02,pass,pass,pass,pass,pass,,2
+f7107735ae45b0fb7199fcd827e4d5cf8520beac0e70288b5f05b7040db80341,nat,B03,pass,pass,pass,pass,pass,,2
+09c731c0f101e777338d13f72a7a5e33cc624a1fc6aab54dc783604348c05b84,final,B03,pass,pass,pass,pass,pass,,2
+014b5a3ae8fa78b9dae7f2a886a14adefcebd2ef0e298eca7fcb22fca035595a,nat,B04,pass,pass,pass,pass,pass,,2
+5c2d974178d70455bdd3691a7039617fbe15da6d85e3962a6650fcab998924e3,final,B04,pass,pass,pass,pass,pass,,2
+4a1587ac8ef4c093db6158ac64dc4cb580993e3f49ef5b91e42c0c1dfac16885,nat,B05,pass,pass,pass,pass,pass,,2
+df8f90c2655afa49ce8ea91e11616084636850b37ffcfed1689edb74f62c7b91,final,B05,pass,pass,pass,pass,pass,,2
+a8db1001e05f0afa3d9fa981d3c692c469649276fdde0aca4a319cce8d3256c8,nat,B06,pass,pass,pass,pass,pass,,2
+a8db1001e05f0afa3d9fa981d3c692c469649276fdde0aca4a319cce8d3256c8,final,B06,pass,pass,pass,pass,pass,,2
+eeebcbd1c8ddd802bd515d960dc2fff8de3c6a33fc27b3769a09bb07419c2483,nat,B07,pass,pass,pass,pass,pass,,2
+eeebcbd1c8ddd802bd515d960dc2fff8de3c6a33fc27b3769a09bb07419c2483,final,B07,pass,pass,pass,pass,pass,,2
+17598a4cf07551c0ac310725c69731449773a8f87f81a75f8aeb72b6a67caa95,nat,B08,pass,pass,pass,pass,pass,,2
+de03c616ab08858f1ae1fc85ad01503add8e291905ee2a97eeaa5117afe467cc,final,B08,pass,pass,pass,pass,pass,,2
+339a46e4bd54d53b9fc70e8e38a7f12dcb923c098cce35f39a26e5c6b6b6d9dc,nat,B09,pass,pass,pass,pass,pass,,2
+339a46e4bd54d53b9fc70e8e38a7f12dcb923c098cce35f39a26e5c6b6b6d9dc,final,B09,pass,pass,pass,pass,pass,,2
+0890888f00dbab9be048ebb9bc8a323368dd27c0bf92b800c817be1ab0938db9,nat,B10,pass,pass,pass,pass,pass,,2
+0890888f00dbab9be048ebb9bc8a323368dd27c0bf92b800c817be1ab0938db9,final,B10,pass,pass,pass,pass,pass,,2
+08a24299f93d03d9cc00f6f5420ecec155f1e8dfe2aa02e316b3c3affc4d0127,nat,B11,pass,pass,pass,pass,pass,,2
+2876c379718871059e0e635cb5fb14b36dbb33832648e2a8eb738d4e1c94552d,final,B11,pass,pass,pass,pass,pass,,2
+8ad5f30b2e3a5df1939d88d3ff45bab927dd13c1206b58325992dc42d417829d,nat,B12,pass,pass,pass,pass,pass,,2
+8ad5f30b2e3a5df1939d88d3ff45bab927dd13c1206b58325992dc42d417829d,final,B12,pass,pass,pass,pass,pass,,2
+6d23373fc953ca0d1286d121b592f9bc707d4eaa6c021af2a6431d3b7783aed5,nat,B13,pass,pass,pass,pass,pass,,2
+7d14e3237a1d8587b30150e8336ae9bac7945ff9de50838ea632c1593e03489e,final,B13,pass,pass,pass,pass,pass,,2
+74126fa15e0197987f48692e5b25b5ab36f707630945bd281bc594e7c6071afb,nat,B14,pass,pass,pass,pass,pass,,2
+56b10dd6a5ec6949a9395de79bc4a5112a79937fc2c6f62df3050dbe6462ff0d,final,B14,pass,pass,pass,pass,pass,,2
+adcd265fabddc02f7795a9095a7e9e9f7abff49e2f56b09168655c03b658a9a6,nat,B15,pass,pass,pass,pass,pass,,2
+adcd265fabddc02f7795a9095a7e9e9f7abff49e2f56b09168655c03b658a9a6,final,B15,pass,pass,pass,pass,pass,,2
+cabe1b8a0c6c548bad2bd40c57bfb713097af44b45dfb918fd45ea158d3de6de,nat,B16,pass,pass,pass,pass,pass,,2
+2f33d76386305709857a5cc25c63405a811ffa738b01934ce2c10c56fe92d90c,final,B16,pass,pass,pass,pass,pass,,2
+9982abe3c25e88b558b2ce71b9f70a916951b58fc292317f66a04436dc05ca2a,nat,B17,pass,pass,pass,pass,pass,,2
+9982abe3c25e88b558b2ce71b9f70a916951b58fc292317f66a04436dc05ca2a,final,B17,pass,pass,pass,pass,pass,,2
+15fb39d7e4a10192679c84c41f32a14ece1d829f2ccc96134ad2bdd51c96127f,nat,B18,pass,fail,pass,pass,pass,"[text fail: legible third-party prop text ""TRADITIONAL OLIVE OIL"" counts as stray text (labeller ruling 2026-09-26)]",2
+0de7d0577757d7820e1706e2e404d28026b79f2b366cd6b2910a707b6239f425,final,B18,pass,pass,pass,pass,pass,,2
+a60840279b4f68fb77148d774301d6d8036a451987873f81f315f71104941a76,nat,B19,pass,pass,pass,pass,pass,,2
+a60840279b4f68fb77148d774301d6d8036a451987873f81f315f71104941a76,final,B19,pass,pass,pass,pass,pass,,2
+ee209c50c16fa015ae262280fa9dc41d6e7e1ae0ea159c46ff1d891850f2fbd5,nat,B20,pass,fail,pass,pass,pass,,2
+a4ea65d5b44fffb32a70b1aab253c62a5a7e2b82ce4942bb7a01a01b5ab5e9a5,final,B20,pass,pass,pass,pass,pass,,2
+79d993babdaebcc88e094592e2ce88a91ecc89af946b8b09dd61d656f82fa465,plant,B01,,,,fail,,PL37-context_season: human-verified generated context failure,2
+a087c250f0a5b19411a35a1bd3c1ce8c07642d3fd060d8b99438353c6d4561d6,plant,B02,,,,fail,,PL38-context_season: human-verified generated context failure,2
+274c601afa2e6cdd5fa976bbdfa9259743b643f10afd1a845da10eb03be847af,plant,B06,,,,fail,,PL39-context_season: human-verified generated context failure,2
+02f5e2c17d1cf7a87b8181feddeb1fa0faecf6b2c43200a729c77a102efac5b5,plant,B10,,,,fail,,PL40-context_season: human-verified generated context failure,2
+e049951282cb0eea11e9036a7a9441b34fbd0cc8e762161dea4b9063984506c1,plant,B04,,,,fail,,PL41-context_geo: human-verified generated context failure,2
+a832b59d71ba191c06888a0d29165e961f0b0674d921b9d36248c6a9c2367e65,plant,B13,,,,fail,,PL42-context_geo: human-verified generated context failure,2
+6736fee106fb34607b8de9822665216affe747f081fadb125903b1cba7984512,plant,B18,pass,fail,fail,,,"PL17-product_swap: [text fail: legible third-party prop text ""TRADITIONAL OLIVE OIL"" counts as stray text (labeller ruling 2026-09-26)]",2
+ae40826178582ffd58a50b063c464f4929dbae0ca8f00cf25cc620a7a8e4afc6,plant,B18,pass,fail,fail,,,"PL22-product_logo_erased: [text fail: legible third-party prop text ""TRADITIONAL OLIVE OIL"" counts as stray text (labeller ruling 2026-09-26)]",2

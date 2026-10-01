@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+node_modules/
+.next/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+services/api/.cache/
+.DS_Store

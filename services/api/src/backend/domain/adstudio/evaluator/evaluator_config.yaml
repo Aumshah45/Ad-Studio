@@ -1,0 +1,91 @@
+# Evaluator thresholds (ai-design §5). Tuned on the calibration split only (§9.4); bump
+# `evaluator_version` whenever a value changes (it is part of every evaluation's identity).
+evaluator_version: ev-0.8        # ev-0.8: OCR ensemble (Tesseract + Apple Vision + read-back), hue-drift note
+# ev-0.7: failure-analysis fixes R3-R6 (analysis-2026-09-26.md). ev-0.6: composition dimension,
+# ADR-007. ev-0.5: label subtext is a note; repairs stop when they stall. ev-0.4: drawn delimiters
+# and extra words in the zone fail text.
+# The cache-key part of the ad_inspect / context_judge answers. Their prompts, schemas and inputs
+# are unchanged since ev-0.5, so their recorded answers stay valid: bump this only when those
+# calls' questions or inputs change without a prompt version bump. (The composition judge is keyed
+# by its own prompt version.)
+judge_cache_version: ev-0.5
+technical:
+  aspect_tolerance: 0.015        # |w/h - requested| / requested
+  blank_std_min: 8.0             # luminance std-dev, 0-255
+  copy_ssim_max: 0.92            # SSIM(ad, reference resized to the ad) must stay below
+  placeholder_tile_px: 32
+  placeholder_tile_std: 3.0      # a tile below this std-dev counts as near-uniform
+  placeholder_fraction_max: 0.85 # fraction of near-uniform tiles
+text:
+  cer_max: 0.0                   # strict exact match after normalisation (PRD: 100% exact text)
+  zone_margin: 0.05              # the zone crop grows by this fraction of the image on each side
+  zone_upscale: 2
+  stray_min_conf: 60
+  # ev-0.7 (R4): 3-letter OCR tokens outside the zone were scene texture («ser», «aye», «pts»);
+  # a stray token needs 4+ letters/digits (the planted stray words have 7+).
+  stray_min_alnum: 4
+  # ev-0.8 ensemble (text.py): a text FAIL needs two readers (Tesseract, Apple Vision, the VLM
+  # read-back) to see the same error. A difference only one reader sees is re-read at this
+  # upscale (the first read is zone_upscale) with both engines; an engine still sees it only if
+  # all of its reads show it. Agreement -> fail, nobody -> pass, otherwise unverified. (ev-0.7's
+  # R4 accent / dropped-line / trailing-junk special cases are subsumed.)
+  reread_upscale: 4
+  stray_reference_ratio: 80      # rapidfuzz ratio at or above which a word is the product's label
+  product_box_margin: 0.02       # OCR words inside the (grown) product box are label text, not stray
+  # Extra content in the headline zone (outside the matched window, centre inside the exact zone,
+  # conf >= stray_min_conf): a quote/guillemet/bracket the copy lacks, or a token of at least
+  # zone_extra_min_alnum letters/digits that is not a word of the copy. It must be read by at least
+  # zone_extra_min_sources of the zone reads (OCR noise rarely repeats across preprocessings).
+  zone_extra_min_alnum: 2
+  zone_extra_min_sources: 2
+product:
+  delta_e_max: 18.0              # weighted CIEDE2000 between dominant colours (ai-design §5.3)
+  delta_e_kl: 2.0                # lightness weight halved: scene lighting tolerated, hue drift not
+  cluster_delta_e_max: 25.0      # ...and no single dominant colour (weight >= cluster_min_weight)
+  cluster_min_weight: 0.10       # may drift further than this (a recoloured logo band or cap)
+  kmeans_k: 3
+  kmeans_seed: 0
+  sample_px: 4096                # pixels sampled for k-means (fixed seed)
+  crop_max_px: 160               # crops are downscaled to this long edge first
+  border_fraction: 0.06          # border ring used to estimate the crop's background colour
+  background_delta: 12.0         # dE76 from the background colour that counts as product
+  mask_min_fraction: 0.2         # below this the whole crop is used (GrabCut-style fallback)
+  max_count: 1                   # exactly one instance of the product
+  unsure_fails: true             # a checklist "unsure" fails the gate, flagged low_confidence
+  # Checklist items that never fail the gate: a "no"/"unsure" is recorded as a note on a passing
+  # check ("minor label detail degraded") and counted in the eval report. The logo and the large,
+  # prominent label text (main_label_text_preserved) still fail.
+  note_checks: [label_subtext_preserved]
+  # ev-0.8: hue drift (analysis E6, user ruling: red-vs-pink is acceptable shade variation, so it is
+  # MEASURED, never a failure). For each dominant reference colour with CIELAB chroma >= this and
+  # weight >= cluster_min_weight, the hue-angle difference to its matched ad colour; the largest
+  # at or above hue_drift_note_deg is a note (`hue_drift`), reported as its own rate. Not tuned.
+  hue_chroma_min: 20.0
+  hue_drift_note_deg: 10.0
+context:
+  unsure_must_fails: true        # "unsure" on a must-check fails, flagged low_confidence
+  avoid_check_severity: must     # the compiled avoid-list check
+  # ev-0.7 (R6): people / body parts anatomically and physically coherent with the product
+  # (`ctx.people_coherent`); added because the v1 reason pass showed "people" as a distinct cause.
+  people_check_severity: must
+composition:
+  unsure_fails: true             # "unsure" on a composition check fails, flagged low_confidence
+  # Deterministic sanity signal (supporting evidence, never a failure unless extreme): the product
+  # box's area as a fraction of the image vs the range expected from the product's real-world size
+  # and the scene's framing (sizing.py). Outside the range -> a note; beyond these factors -> fail.
+  area_extreme_over: 4.0         # observed area > 4x the expected maximum (about 2x the height)
+  area_extreme_under: 0.12       # observed area < 0.12x the expected minimum
+  # ev-0.7 (R3, composition_judge v2): the judge's implied product size (from the scene object
+  # whose real size is most certain) / the product's real size must lie in this range. Tuned on
+  # the calibration products P1-P3 only; P4-P5 are held out. Sweep over v1+v2 calibration items
+  # (lo 0.30-0.95, hi 1.10-2.60): hi 1.25 is the best F1 (0.80 -> 0.87: +B07-final, +B08 nat and
+  # final, -B05 nat and final at 1.32); no calibration item reads below 0.9, so lo stays at the
+  # analysis' 0.6. The judge's estimates cluster at 1.0, so the margin is thin.
+  scale_ratio_min: 0.6
+  scale_ratio_max: 1.25
+  # More pasted-in signs than this fail natural integration; null = the judge's verdict decides.
+  pasted_signs_max: null
+repair:
+  # A repair whose output is at least this SSIM-similar to its parent changed nothing useful: no
+  # further image-model repairs for the run (a text overlay, which makes no model call, may still run).
+  stall_ssim: 0.98

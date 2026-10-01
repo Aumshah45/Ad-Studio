@@ -1,0 +1,33 @@
+image_sha,set,brief_id,technical,text,product,context,composition,notes,rubric_version
+d38d01c7a17482591ac961e01938a2cecb3f4683d5bb410e229c25e0fd70ce1f,nat,V01,pass,pass,pass,pass,pass,,2
+93a463662fb3735f911148e789a42668dfd641fd28ca067e45ef2b17be500f99,final,V01,pass,pass,pass,pass,pass,,2
+b7f5c65cb09d472e9a736bc7355e7e9e47a0f9e05a554be0daf2bf84127a78d3,nat,V02,pass,pass,pass,pass,pass,,2
+b7f5c65cb09d472e9a736bc7355e7e9e47a0f9e05a554be0daf2bf84127a78d3,final,V02,pass,pass,pass,pass,pass,,2
+cd95e232af3a932760421376ba8980cc3c19a3c12c080ae36963653e4cea2100,nat,V03,pass,pass,pass,pass,pass,,2
+cd95e232af3a932760421376ba8980cc3c19a3c12c080ae36963653e4cea2100,final,V03,pass,pass,pass,pass,pass,,2
+4d7f75af257a1e0c9a8ae69c661837fe27504a64af9992ebb40d4839c369f58f,nat,V04,pass,pass,pass,pass,pass,,2
+0da5728c27427c3d44b71c6dc14069d2c369e998b2e265036aa62e6019b0fb8a,final,V04,pass,pass,pass,pass,pass,,2
+b1d093fb29700b52644db648006d5561c084c30fb846d255506ecabefe6a8a0c,nat,V05,pass,fail,pass,pass,pass,human (after review): stray quotes around the headline,2
+76448a04bb142db246a475b107a5be02c9709ec824d380303d554106b2545bab,final,V05,pass,pass,pass,pass,pass,,2
+a3f2eb520238c9f029372af52ffcc12fa9b79d61b151ef97c9e5d28af592e9a6,nat,V06,pass,pass,pass,pass,pass,,2
+f2a97d27c1f935add6829f7b1e54968428f34e5b6b49cd76cd6a1660dbd73f86,final,V06,pass,pass,pass,pass,pass,,2
+79f9cfd0e7f463c1f64e9c8094dad9c22a7154031a0a1f21b1e082a2d68d696f,nat,V07,pass,pass,pass,pass,pass,,2
+beabf9496f6acd1ec9f440c4184c9460874e9f7732ffaeaa462854e6fd502325,final,V07,pass,pass,pass,pass,pass,,2
+c20e0df1602ac26d6406f7f67a13ae0126019ffc588eddee75ed1bc3be7f82c9,nat,V08,pass,pass,pass,pass,pass,,2
+2974f2b86f6f32bcd20d81d8d56090b5a64036e45eb110a40d36d1c0735d8a3b,final,V08,pass,pass,pass,pass,pass,,2
+b34813576268af99ade230b5ceba3c21691bb90590abc68825c1ed09b676b4d9,nat,V09,pass,pass,pass,pass,pass,,2
+b34813576268af99ade230b5ceba3c21691bb90590abc68825c1ed09b676b4d9,final,V09,pass,pass,pass,pass,pass,,2
+c266a74b7dce4d4c4fcf8eee9bf400d4b2fcde2f04dd6a9acd4e911d676ccc5c,nat,V10,pass,pass,pass,pass,pass,,2
+4fbb8bc28d8e64987b9b39395bcf1ee21fe93215e3fc195f8a55cde709ad3eef,final,V10,pass,pass,pass,pass,pass,,2
+b8706580a76692462906fedec07ea2c5419356b4a1361d9174d46eb801bf2f0e,nat,V11,pass,pass,pass,pass,pass,,2
+b8706580a76692462906fedec07ea2c5419356b4a1361d9174d46eb801bf2f0e,final,V11,pass,pass,pass,pass,pass,,2
+8e5a3de53feb1b605388d81cea3730a7c221730dcd9d3d6669893e6f6942d7b4,nat,V12,pass,fail,pass,pass,pass,human (after review): Western % instead of Arabic ٪,2
+94a9cf94aa91611efa0aaa151f0ea71673f2ebd89d6ff607ad8c18941e51abc6,final,V12,pass,pass,pass,pass,pass,,2
+9e63eda22f543d759c09dc8d227a6ac0a3c55cbbe41551769abb528b064df98b,nat,V13,pass,pass,pass,pass,pass,,2
+a6d8a7e4b22bb9d2515acae7d79c9e10d8ddafd04331de24a301a68209d3d7c2,final,V13,pass,pass,pass,pass,pass,,2
+560e0cf081259e8eba375a75640022019300dface00e744db30796dffe2c0220,nat,V14,pass,pass,pass,pass,pass,,2
+560e0cf081259e8eba375a75640022019300dface00e744db30796dffe2c0220,final,V14,pass,pass,pass,pass,pass,,2
+1bb3d2fd37d55bf47fd2c151f683995b4880108bc4edede8a43f4c184ccf282e,nat,V15,pass,fail,pass,pass,pass,human (after review): curly quotes instead of guillemets,2
+9b2e2c5942a59cc524e4fde6667349c6d46b6ae3c5ce08674442dce014e80094,final,V15,pass,pass,pass,pass,pass,,2
+f5836cdd02f9e614f53b565347a2fa34d5d9310fc01066600f81a5aab4dde769,nat,V16,pass,pass,pass,pass,pass,,2
+920fe048abc9a6fac87ccca002055767185d6c98ad726825aa0cd1241b592d43,final,V16,pass,pass,pass,pass,pass,,2

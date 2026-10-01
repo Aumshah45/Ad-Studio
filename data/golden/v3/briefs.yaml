@@ -1,0 +1,33 @@
+# Golden v3 briefs: the unseen hard-case set (agent-log Stage 5, "Addressing the stated limitations").
+# Selected by the human on 2026-09-26 from an agent-drafted menu of 16 candidates (all 16 chosen),
+# written before any v3 image was generated and scored with the frozen evaluator ev-0.8.
+# Mostly held-out products (P4, P5) so the evaluator was never tuned on them.
+# Same conventions as ../briefs.yaml (geography ISO 3166-1 alpha-2; required_text rendered exactly).
+# Two picks named seasons the planner's tables do not know (Nairobi Marathon, Inti Raymi); they use
+# the month instead so the generator is not changed for the test set (the tag keeps the intent).
+version: 3
+aspect_ratio_default: "4:5"
+products:
+  P4: {file: products/P4.jpg, name: "Plain pink water bottle"}
+  P5: {file: products/P5.jpg, name: "Sunscreen tube"}
+briefs:
+  # People / crowds
+  - {id: V01, product: P5, geography: AU, season: "January", required_text: "Slip, Slop, Slap!", tags: [people, south, summer, punctuation]}
+  - {id: V02, product: P4, geography: KE, season: "October", required_text: "Run Your City", tags: [people, equatorial, event_marathon]}
+  - {id: V03, product: P4, geography: IN, season: "Holi", required_text: "Holi Hai! Stay Hydrated", tags: [people, holiday, colour_trap]}
+  - {id: V04, product: P5, geography: BR, season: "Carnaval", required_text: "Brilhe no Carnaval", tags: [people, holiday, south]}
+  # Geography / counter-intuitive season
+  - {id: V05, product: P5, geography: NZ, season: "Christmas", required_text: "Summer Christmas, Sun-Safe", tags: [geography, south, holiday, counter_intuitive]}
+  - {id: V06, product: P4, geography: IS, season: "June", required_text: "Midnight Sun Hikes", tags: [geography, polar, counter_intuitive]}
+  - {id: V07, product: P4, geography: CL, season: "July", required_text: "Ski Season Hydration", tags: [geography, south, winter, counter_intuitive]}
+  - {id: V08, product: P5, geography: PE, season: "June", required_text: "Protección Andina", tags: [geography, south, winter, event_inti_raymi, diacritics]}
+  # Non-Latin scripts
+  - {id: V09, product: P5, geography: KR, season: "Chuseok", required_text: "추석 특가 20%", tags: [non_latin, hangul, holiday, percent]}
+  - {id: V10, product: P4, geography: TH, season: "Songkran", required_text: "สงกรานต์ ลด 30%", tags: [non_latin, thai, holiday, percent]}
+  - {id: V11, product: P5, geography: SA, season: "Ramadan", required_text: "رمضان كريم", tags: [non_latin, arabic, rtl, holiday]}
+  - {id: V12, product: P4, geography: EG, season: "summer", required_text: "خصم ٢٥٪", tags: [non_latin, arabic, rtl, eastern_arabic_digits, percent]}
+  # Tricky text and prices
+  - {id: V13, product: P5, geography: DE, season: "July", required_text: "Nur 12,99 € – LSF 50+", tags: [price, currency, special_chars]}
+  - {id: V14, product: P4, geography: CH, season: "May", required_text: "Nur CHF 24.90", tags: [price, currency]}
+  - {id: V15, product: P5, geography: FR, season: "August", required_text: "« Été 2027 » −40 %", tags: [guillemets, special_chars, percent, tesseract_5_3_known_gap]}
+  - {id: V16, product: P4, geography: US, season: "back-to-school", required_text: "Buy 2, Get 1 FREE*", tags: [asterisk, fine_print]}

@@ -1,0 +1,247 @@
+# Market facts for hemisphere/season resolution (ai-design §2.1). Deterministic; never a model.
+#
+# lat: representative latitude of where most people live (not the geometric centroid).
+# hemisphere: derived from lat (|lat| < 10 -> equatorial) unless `hemisphere:` overrides it
+#   (countries spanning both hemispheres are fixed by hand).
+# climate: temperate | mediterranean | continental | polar | tropical | arid
+#   (the season rules: temperate-like climates use meteorological seasons by hemisphere; tropical
+#   uses wet/dry by `wet` months; arid uses hot/mild).
+# wet: tropical wet-season months. currency: symbol or code. script: ISO 15924 of the main script.
+# lang: Tesseract language packs for this market's Latin-script copy (besides eng).
+# cities: aliases (lower-case) for geography_detail. cues: default locale cues for the fallback plan.
+version: 1
+countries:
+  AU:
+    lat: -33.9
+    climate: temperate
+    currency: "$"
+    script: Latn
+    cities: [sydney, melbourne, brisbane, perth, adelaide, canberra, hobart, gold coast, queensland, new south wales, victoria]
+    cues: [eucalyptus trees, weatherboard houses with verandas, wide sandy beaches]
+  NZ:
+    lat: -39.0
+    climate: temperate
+    currency: "$"
+    script: Latn
+    cities: [auckland, wellington, christchurch, queenstown]
+    cues: [green rolling hills, timber bach holiday homes, native ferns]
+  ZA:
+    lat: -28.0
+    climate: temperate
+    currency: R
+    script: Latn
+    cities: [cape town, johannesburg, durban, pretoria]
+    cues: [flat-topped mountain skyline, fynbos shrubs, open-air braai areas]
+  AR:
+    lat: -34.6
+    climate: temperate
+    currency: "$"
+    script: Latn
+    lang: [spa]
+    cities: [buenos aires, córdoba, cordoba, mendoza, rosario]
+    cues: [jacaranda-lined avenues, colonial-style balconies, mate gourd on a café table]
+  CL:
+    lat: -33.4
+    climate: mediterranean
+    currency: "$"
+    script: Latn
+    lang: [spa]
+    cities: [santiago, valparaíso, valparaiso, viña del mar]
+    cues: [Andes mountains on the horizon, colourful hillside houses, vineyards]
+  UY: {lat: -34.9, climate: temperate, currency: "$", script: Latn, lang: [spa], cities: [montevideo]}
+  PY: {lat: -25.3, climate: temperate, currency: "₲", script: Latn, lang: [spa], cities: [asunción, asuncion]}
+  BO: {lat: -16.5, climate: temperate, currency: Bs, script: Latn, lang: [spa], cities: [la paz, santa cruz]}
+  PE: {lat: -12.0, climate: arid, currency: S/, script: Latn, lang: [spa], cities: [lima, cusco]}
+  BR:
+    lat: -23.5
+    hemisphere: south
+    climate: temperate
+    currency: R$
+    script: Latn
+    lang: [por]
+    cities: [são paulo, sao paulo, rio de janeiro, rio, brasília, brasilia, salvador, belo horizonte, curitiba]
+    cues: [tropical plants on a tiled balcony, black-and-white wave-pattern pavement, bright beach kiosks]
+  EC: {lat: -0.2, hemisphere: equatorial, climate: tropical, wet: [1, 2, 3, 4, 5], currency: "$", script: Latn, lang: [spa], cities: [quito, guayaquil]}
+  CO: {lat: 4.7, climate: tropical, wet: [4, 5, 10, 11], currency: "$", script: Latn, lang: [spa], cities: [bogotá, bogota, medellín, medellin, cartagena]}
+  VE: {lat: 8.0, climate: tropical, wet: [5, 6, 7, 8, 9, 10], currency: Bs, script: Latn, lang: [spa], cities: [caracas]}
+  PA: {lat: 9.0, climate: tropical, wet: [5, 6, 7, 8, 9, 10, 11], currency: B/., script: Latn, lang: [spa], cities: [panama city]}
+  CR: {lat: 10.0, climate: tropical, wet: [5, 6, 7, 8, 9, 10, 11], currency: "₡", script: Latn, lang: [spa], cities: [san josé, san jose]}
+  JM: {lat: 18.1, climate: tropical, wet: [5, 6, 9, 10, 11], currency: "$", script: Latn, cities: [kingston, montego bay]}
+  DO: {lat: 18.5, climate: tropical, wet: [5, 6, 7, 8, 9, 10, 11], currency: RD$, script: Latn, lang: [spa], cities: [santo domingo, punta cana]}
+  MX:
+    lat: 19.4
+    climate: temperate
+    currency: "$"
+    script: Latn
+    lang: [spa]
+    cities: [mexico city, cdmx, guadalajara, monterrey, cancún, cancun, oaxaca]
+    cues: [colourful painted facades, terracotta tiles, papel picado bunting]
+  US:
+    lat: 38.0
+    climate: temperate
+    currency: "$"
+    script: Latn
+    cities: [new york, nyc, los angeles, chicago, san francisco, seattle, boston, miami, austin, texas, california]
+    cues: [suburban porch with a wooden deck, tree-lined residential street, backyard barbecue]
+  CA:
+    lat: 45.5
+    climate: continental
+    currency: "$"
+    script: Latn
+    lang: [fra]
+    cities: [toronto, vancouver, montréal, montreal, calgary, ottawa, quebec, québec]
+    cues: [log cabin interior, maple and pine forest, lakeside dock]
+  GB:
+    lat: 52.5
+    climate: temperate
+    currency: "£"
+    script: Latn
+    cities: [london, manchester, birmingham, edinburgh, glasgow, bristol, england, scotland, wales, britain, great britain, uk]
+    cues: [brick terraced houses, cosy pub-style interior, green park with hedgerows]
+  IE: {lat: 53.3, climate: temperate, currency: "€", script: Latn, cities: [dublin, cork, galway]}
+  FR:
+    lat: 46.5
+    climate: temperate
+    currency: "€"
+    script: Latn
+    lang: [fra]
+    cities: [paris, lyon, marseille, nice, bordeaux, toulouse]
+    cues: [Haussmann-style stone balconies, café terrace with bistro chairs, lavender fields]
+  DE:
+    lat: 51.0
+    climate: temperate
+    currency: "€"
+    script: Latn
+    lang: [deu]
+    cities: [berlin, munich, münchen, hamburg, cologne, köln, frankfurt, bavaria, bayern]
+    cues: [half-timbered houses, beer-garden benches under chestnut trees, tidy cobbled squares]
+  NL: {lat: 52.2, climate: temperate, currency: "€", script: Latn, lang: [nld], cities: [amsterdam, rotterdam, the hague, utrecht, holland]}
+  BE: {lat: 50.8, climate: temperate, currency: "€", script: Latn, lang: [fra, nld], cities: [brussels, antwerp, ghent]}
+  LU: {lat: 49.6, climate: temperate, currency: "€", script: Latn, lang: [fra, deu], cities: [luxembourg city]}
+  CH: {lat: 47.0, climate: temperate, currency: CHF, script: Latn, lang: [deu, fra], cities: [zurich, zürich, geneva, genève, basel, bern]}
+  AT: {lat: 48.0, climate: continental, currency: "€", script: Latn, lang: [deu], cities: [vienna, wien, salzburg, innsbruck]}
+  ES: {lat: 40.4, climate: mediterranean, currency: "€", script: Latn, lang: [spa], cities: [madrid, barcelona, valencia, seville, sevilla, málaga, malaga]}
+  PT: {lat: 39.5, climate: mediterranean, currency: "€", script: Latn, lang: [por], cities: [lisbon, lisboa, porto, faro]}
+  IT: {lat: 42.5, climate: mediterranean, currency: "€", script: Latn, lang: [ita], cities: [rome, roma, milan, milano, naples, florence, venice, turin]}
+  GR: {lat: 38.0, climate: mediterranean, currency: "€", script: Grek, cities: [athens, thessaloniki]}
+  CY: {lat: 35.1, climate: mediterranean, currency: "€", script: Grek, cities: [nicosia, limassol]}
+  MT: {lat: 35.9, climate: mediterranean, currency: "€", script: Latn, cities: [valletta]}
+  TR: {lat: 39.9, climate: mediterranean, currency: "₺", script: Latn, lang: [tur], cities: [istanbul, ankara, izmir, antalya]}
+  "NO":
+    lat: 60.0
+    climate: continental
+    currency: kr
+    script: Latn
+    lang: [nor]
+    cities: [oslo, bergen, trondheim, tromsø, tromso]
+    cues: [red wooden cabins, fjord and pine forest, Scandinavian minimalist interior]
+  SE: {lat: 59.3, climate: continental, currency: kr, script: Latn, lang: [swe], cities: [stockholm, gothenburg, göteborg, malmö, malmo]}
+  DK: {lat: 55.7, climate: temperate, currency: kr, script: Latn, lang: [dan], cities: [copenhagen, københavn, aarhus]}
+  FI: {lat: 61.0, climate: continental, currency: "€", script: Latn, lang: [fin], cities: [helsinki, tampere]}
+  IS: {lat: 64.1, climate: polar, currency: kr, script: Latn, cities: [reykjavik, reykjavík]}
+  PL: {lat: 52.0, climate: continental, currency: zł, script: Latn, lang: [pol], cities: [warsaw, warszawa, kraków, krakow, gdańsk]}
+  CZ: {lat: 50.0, climate: continental, currency: Kč, script: Latn, lang: [ces], cities: [prague, praha, brno]}
+  HU: {lat: 47.5, climate: continental, currency: Ft, script: Latn, lang: [hun], cities: [budapest]}
+  RO: {lat: 45.0, climate: continental, currency: lei, script: Latn, lang: [ron], cities: [bucharest, cluj]}
+  RU: {lat: 55.7, climate: continental, currency: "₽", script: Cyrl, cities: [moscow, saint petersburg, st petersburg]}
+  UA: {lat: 49.0, climate: continental, currency: "₴", script: Cyrl, cities: [kyiv, kiev, lviv, odesa]}
+  KZ: {lat: 45.0, climate: continental, currency: "₸", script: Cyrl, cities: [almaty, astana]}
+  IL: {lat: 32.0, climate: mediterranean, currency: "₪", script: Hebr, cities: [tel aviv, jerusalem, haifa]}
+  EG: {lat: 30.0, climate: arid, currency: E£, script: Arab, cities: [cairo, alexandria]}
+  MA: {lat: 33.6, climate: mediterranean, currency: MAD, script: Arab, cities: [casablanca, marrakech, rabat]}
+  SA: {lat: 24.7, climate: arid, currency: SAR, script: Arab, cities: [riyadh, jeddah, mecca, medina]}
+  AE:
+    lat: 25.2
+    climate: arid
+    currency: AED
+    script: Arab
+    cities: [dubai, abu dhabi, sharjah, uae, emirates]
+    cues: [modern glass high-rise skyline, desert dunes at golden hour, shaded courtyard with palms]
+  QA: {lat: 25.3, climate: arid, currency: QR, script: Arab, cities: [doha]}
+  KW: {lat: 29.4, climate: arid, currency: KD, script: Arab, cities: [kuwait city]}
+  BH: {lat: 26.2, climate: arid, currency: BD, script: Arab, cities: [manama]}
+  OM: {lat: 23.6, climate: arid, currency: OMR, script: Arab, cities: [muscat]}
+  JO: {lat: 31.9, climate: arid, currency: JD, script: Arab, cities: [amman]}
+  PK: {lat: 31.5, climate: arid, currency: Rs, script: Arab, cities: [karachi, lahore, islamabad]}
+  NG: {lat: 6.5, climate: tropical, wet: [4, 5, 6, 7, 8, 9, 10], currency: "₦", script: Latn, cities: [lagos, abuja]}
+  GH: {lat: 5.6, climate: tropical, wet: [4, 5, 6, 9, 10], currency: GH₵, script: Latn, cities: [accra, kumasi]}
+  KE:
+    lat: -1.3
+    climate: tropical
+    wet: [3, 4, 5, 10, 11, 12]
+    currency: KSh
+    script: Latn
+    cities: [nairobi, mombasa, kisumu]
+    cues: [acacia trees on open savanna, bright market stalls, red earth paths]
+  TZ: {lat: -6.8, climate: tropical, wet: [3, 4, 5, 11, 12], currency: TSh, script: Latn, cities: [dar es salaam, zanzibar, arusha]}
+  UG: {lat: 0.3, climate: tropical, wet: [3, 4, 5, 9, 10, 11], currency: USh, script: Latn, cities: [kampala]}
+  RW: {lat: -1.9, climate: tropical, wet: [3, 4, 5, 10, 11], currency: FRw, script: Latn, cities: [kigali]}
+  ET: {lat: 9.0, climate: tropical, wet: [6, 7, 8, 9], currency: Br, script: Ethi, cities: [addis ababa]}
+  IN:
+    lat: 21.0
+    climate: tropical
+    wet: [6, 7, 8, 9]
+    currency: "₹"
+    script: Deva
+    cities: [mumbai, delhi, new delhi, bengaluru, bangalore, chennai, kolkata, hyderabad, pune, jaipur, goa]
+    cues: [marigold garlands, brightly painted doorways, brass and terracotta homeware]
+  BD: {lat: 23.8, climate: tropical, wet: [6, 7, 8, 9, 10], currency: "৳", script: Beng, cities: [dhaka, chittagong]}
+  LK: {lat: 7.0, climate: tropical, wet: [5, 6, 7, 8, 9, 10, 11], currency: Rs, script: Sinh, cities: [colombo, kandy]}
+  NP: {lat: 27.7, climate: temperate, currency: Rs, script: Deva, cities: [kathmandu, pokhara]}
+  TH: {lat: 13.8, climate: tropical, wet: [5, 6, 7, 8, 9, 10], currency: "฿", script: Thai, cities: [bangkok, phuket, chiang mai]}
+  VN: {lat: 16.0, climate: tropical, wet: [5, 6, 7, 8, 9, 10], currency: "₫", script: Latn, lang: [vie], cities: [hanoi, ho chi minh city, saigon, da nang]}
+  KH: {lat: 11.6, climate: tropical, wet: [5, 6, 7, 8, 9, 10], currency: "៛", script: Khmr, cities: [phnom penh, siem reap]}
+  PH: {lat: 14.6, climate: tropical, wet: [6, 7, 8, 9, 10, 11], currency: "₱", script: Latn, cities: [manila, cebu, davao]}
+  MY: {lat: 3.1, climate: tropical, wet: [11, 12, 1, 2, 3], currency: RM, script: Latn, cities: [kuala lumpur, penang, johor bahru]}
+  SG:
+    lat: 1.35
+    climate: tropical
+    wet: [11, 12, 1]
+    currency: S$
+    script: Latn
+    cities: [singapore]
+    cues: [lush tropical greenery, modern high-rise terraces with plants, colourful shophouse facades]
+  ID: {lat: -6.2, hemisphere: equatorial, climate: tropical, wet: [11, 12, 1, 2, 3], currency: Rp, script: Latn, lang: [ind], cities: [jakarta, bali, surabaya, bandung]}
+  CN: {lat: 32.0, climate: continental, currency: "¥", script: Hans, cities: [beijing, shanghai, guangzhou, shenzhen, chengdu]}
+  HK: {lat: 22.3, climate: temperate, currency: HK$, script: Hant, cities: [hong kong, kowloon]}
+  MO: {lat: 22.2, climate: temperate, currency: MOP, script: Hant, cities: [macau, macao]}
+  TW: {lat: 25.0, climate: temperate, currency: NT$, script: Hant, cities: [taipei, kaohsiung, taichung]}
+  JP:
+    lat: 35.7
+    climate: temperate
+    currency: "¥"
+    script: Jpan
+    cities: [tokyo, osaka, kyoto, yokohama, sapporo, fukuoka, nagoya]
+    cues: [light timber interiors with paper screens, neat residential streets, cherry or maple trees]
+  KR:
+    lat: 37.5
+    climate: continental
+    currency: "₩"
+    script: Kore
+    cities: [seoul, busan, incheon, korea]
+    cues: [modern apartment interior with warm wood, hanok roof lines, neat city cafés]
+  MN: {lat: 47.9, climate: continental, currency: "₮", script: Cyrl, cities: [ulaanbaatar]}
+  FJ: {lat: -18.1, climate: tropical, wet: [11, 12, 1, 2, 3, 4], currency: FJ$, script: Latn, cities: [suva, nadi]}
+aliases:
+  # Common names not in iso3166.yaml (lower-case) -> ISO code.
+  usa: US
+  united states of america: US
+  america: US
+  uk: GB
+  britain: GB
+  great britain: GB
+  england: GB
+  scotland: GB
+  wales: GB
+  northern ireland: GB
+  holland: NL
+  korea: KR
+  republic of korea: KR
+  uae: AE
+  emirates: AE
+  czech republic: CZ
+  turkey: TR
+  russia: RU
+  ivory coast: CI
+  vietnam: VN
+  viet nam: VN
